@@ -2,10 +2,10 @@
 
 navigate to folder:
 
-`unzip gamelogapp.zip
+`unzip gamelogapp.zip'
 
-cd gamelogapp
+'cd gamelogapp'
 
-cd gamelog
+'cd gamelog'
 
-python3 manage.py runserver 8000`
+'python3 manage.py runserver 8000`
