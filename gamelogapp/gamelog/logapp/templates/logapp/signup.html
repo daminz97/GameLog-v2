@@ -1,0 +1,68 @@
+{% extends "logapp/base.html" %}
+
+{% load static %}
+
+{% block title %}
+<title>Sign Up</title>
+{% endblock %}
+
+{% block css %}
+    <link rel="stylesheet" href="{% static 'logapp/css/signup.css' %}">
+{% endblock %}
+
+{% block content %}
+    <div class="signup-content">
+        <h1 class="title">Join the Community!</h1>
+        <div class="signup-form">
+            <form method="POST" id="signup-form">
+                {% csrf_token %}
+                <table>
+                    <tr>
+                        <td class="label-item"><label for="region">Region</label></td>
+                        <td>
+                            <select name="create_region" id="create_region">
+                                <option value="Asia">Asia</option>
+                                <option value="North America">North America</option>
+                                <option value="Europe">Europe</option>
+                                <option value="Africa">Africa</option>
+                            </select>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="label-item"><label for="gender">Gender</label></td>
+                        <td>
+                            <select name="create_gender" id="create_gender">
+                                <option value="Female">Female</option>
+                                <option value="Male">Male</option>
+                            </select>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="label-item"><label for="create_email">Email</label></td>
+                        <td><input type="email" name="create_email" id="create_email" placeholder="your username"></td>
+                    </tr>
+                    <tr>
+                        <td class="label-item"><label for="create_fname">First Name</label></td>
+                        <td><input type="text" name="create_fname" id="create_fname"></td>
+                    </tr>
+                    <tr>
+                        <td class="label-item"><label for="create_lname">Last Name</label></td>
+                        <td><input type="text" name="create_lname" id="create_lname"></td>
+                    </tr>
+                    <tr>
+                        <td class="label-item"><label for="create_username">Username</label></td>
+                        <td><input type="text" name="create_username" id="create_username" placeholder="your username"></td>
+                    </tr>
+                    <tr>
+                        <td class="label-item"><label for="create_password">Password</label></td>
+                        <td><input type="password" name="create_password" id="create_password" placeholder="your password"></td>
+                    </tr>
+                </table>
+                <div class="signup-btn">
+                    <input type="submit" id="signup-btn" value="Signup">
+                    <input type="reset" id="signup-reset-btn" value="Reset">
+                </div>
+            </form>
+        </div>
+    </div>
+{% endblock %}

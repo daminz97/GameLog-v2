@@ -1,0 +1,172 @@
+    .filter-content {
+        width: 30%;
+        height: fit-content;
+        background-color: seagreen;
+        border: 2px solid #000000;
+        border-radius: 25px;
+        margin-right: 1%;
+    }
+    
+    table {
+        padding: 4%;
+        margin-left: auto;
+        margin-right: auto;
+        line-height: 3rem;
+    }
+
+    #add_game {
+        padding: 5%;
+    }
+
+    #not_found_game {
+        margin: 5% auto;
+        color: #fff;
+        text-align: center;
+    }
+    
+    table tr td:nth-child(2) {
+        padding-left: 5%;
+    }
+    
+    table tr td select,
+    table tr td input[type=search] {
+        width: 100%;
+        border: 2px solid #000000;
+        border-radius: 25px;
+        height: 2rem;
+        outline: none;
+    }
+
+    #add_game_platform,
+    #add_game_genre,
+    #add_game_theme,
+    input[type=text],
+    input[type=date] {
+        display: block;
+        width: 70%;
+        margin: 3% auto;
+        text-align: center;
+        border: 2px solid #000000;
+        border-radius: 25px;
+        height: 2rem;
+        outline: none;
+    }
+    
+    table tr td input[type=search]:focus,
+    input[type=text]:focus,
+    input[type=date]:focus {
+        background-color: rgb(127, 153, 201, 0.8);
+    }
+
+    #add_game_platform,
+    #add_game_genre,
+    #add_game_theme,
+    input[type=text]:focus,
+    input[type=date]:focus {
+        background-color: rgb(127, 153, 201, 0.8);
+    }
+
+    input {
+        padding-left: 5%;
+    }
+    
+    .filter-btn-group {
+        padding: 2%;
+        margin-bottom: 5%;
+        text-align: center;
+    }
+    
+    .filter-btn {
+        text-decoration: none;
+        font-weight: bold;
+        color: #000000;
+        background-color: #ffffff;
+        border: 2px solid #000000;
+        border-radius: 25px;
+        padding: 1%;
+        transition: ease 0.2s;
+    }
+    
+    .filter-btn:hover {
+        color: #ffffff;
+        background-color: #000000;
+    }
+    
+    .games-content {
+        width: 70%;
+        background-color: orange;
+        text-align: center;
+        border: 2px solid #000000;
+        border-radius: 25px;
+        z-index: 0;
+        margin-left: 1%;
+    }
+    
+    .component {
+        text-align: center;
+        margin: 5% 0;
+    }
+    /* game list */
+    
+    .game-list-item div {
+        vertical-align: middle;
+        text-align: center;
+        width: 100%;
+    }
+    
+    .game-img {
+        width: 5%;
+    }
+    
+    .game-link {
+        margin-top: auto;
+        margin-bottom: auto;
+    }
+    
+    .game-list li {
+        margin: 2% 0;
+    }
+    
+    .game-item {
+        width: 5%;
+    }
+    
+    .game-rating {
+        width: 10%;
+        margin-top: auto;
+        margin-bottom: auto;
+    }
+    
+    .game-tags {
+        width: 80%;
+    }
+    
+    #steam-game-list {
+        display: none;
+    }
+    
+    @media only screen and (max-width: 768px) {
+        .filter-content,
+        .games-content {
+            width: 90%;
+            display: block;
+            margin: 5% auto;
+        }
+        .title {
+            margin: 3% auto;
+        }
+        .pop {
+            width: min-content;
+        }
+        .game-img {
+            width: 20%;
+            text-align: left;
+        }
+        .game-tags {
+            text-align: center;
+            margin: 0 auto;
+        }
+        .game-list li {
+            margin: 5% 0;
+        }
+    }

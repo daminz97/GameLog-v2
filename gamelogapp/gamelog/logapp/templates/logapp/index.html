@@ -1,0 +1,114 @@
+{% extends "logapp/base.html" %}
+
+{% load static %}
+
+{% block title %}
+<title>GameLog</title>
+{% endblock %}
+
+{% block css %}
+<link rel="stylesheet" href="{% static 'logapp/css/game-item.css' %}">
+<link rel="stylesheet" href="{% static 'logapp/css/main.css' %}">
+{% endblock %}
+
+{% block content %}
+{% if user.is_authenticated %}
+<div class="login-content">
+    <h1 class="title">Trending Games</h1>
+    <div class="game-list-group">
+        <div class="row">
+            <div class="game-list">
+                <div class="row">
+                    <img class="platform-icon" src="{% static 'logapp/img/steam.svg' %}" alt="steam logo">
+                    <table>
+                        {% for steam_game in steam_games %}
+                        <tr>
+                            <td><a class="game-item" href="{% url 'game_detail' steam_game.platform steam_game.id %}">{{ steam_game.name }}</a></td>
+                            <td class="rating-group">
+                                <div>
+                                    <span class="fa fa-star checked"></span>
+                                    <span class="fa fa-star checked"></span>
+                                    <span class="fa fa-star checked"></span>
+                                    <span class="fa fa-star"></span>
+                                    <span class="fa fa-star"></span>
+                                </div>
+                            </td>
+                        </tr>
+                        {% endfor %}
+                    </table>
+                </div>
+            </div>
+            <div class="game-list">
+                <div class="row">
+                    <img class="platform-icon" src="{% static 'logapp/img/nintendo.svg' %}" alt="nintendo logo">
+                    <table>
+                        {% for nintendo_game in nintendo_games %}
+                        <tr>
+                            <td><a class="game-item" href="{% url 'game_detail' nintendo_game.platform nintendo_game.id %}">{{ nintendo_game.name }}</a></td>
+                            <td class="rating-group">
+                                <span class="fa fa-star checked"></span>
+                                <span class="fa fa-star checked"></span>
+                                <span class="fa fa-star checked"></span>
+                                <span class="fa fa-star"></span>
+                                <span class="fa fa-star"></span>
+                            </td>
+                        </tr>
+                        {% endfor %}
+                    </table>
+                </div>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="game-list">
+                <div class="row">
+                    <img class="platform-icon" src="{% static 'logapp/img/playstation.svg' %}" alt="playstation logo">
+                    <table>
+                        {% for ps_game in ps_games %}
+                        <tr>
+                            <td><a class="game-item" href="{% url 'game_detail' ps_game.platform ps_game.id %}">{{ ps_game.name }}</a></td>
+                            <td class="rating-group">
+                                <span class="fa fa-star checked"></span>
+                                <span class="fa fa-star checked"></span>
+                                <span class="fa fa-star checked"></span>
+                                <span class="fa fa-star"></span>
+                                <span class="fa fa-star"></span>
+                            </td>
+                        </tr>
+                        {% endfor %}
+                    </table>
+                </div>
+            </div>
+            <div class="game-list">
+                <div class="row">
+                    <img class="platform-icon" src="{% static 'logapp/img/xbox.svg' %}" alt="xbox logo">
+                    <table>
+                        {% for xbox_game in xbox_games %}
+                        <tr>
+                            <td><a class="game-item" href="{% url 'game_detail' xbox_game.platform xbox_game.id %}">{{ xbox_game.name }}</a></td>
+                            <td class="rating-group">
+                                <span class="fa fa-star checked"></span>
+                                <span class="fa fa-star checked"></span>
+                                <span class="fa fa-star checked"></span>
+                                <span class="fa fa-star"></span>
+                                <span class="fa fa-star"></span>
+                            </td>
+                        </tr>
+                        {% endfor %}
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% else %}
+<div class="logout-content">
+    <h1 class="title">GameLog</h1>
+    <p class="intro">GameLog is an online auto game information logging and analyses system. It is cross-platform and offers easy-to-understand analytics results for the gaming experience. People who are interested in playing games, no matter their gaming levels, or simply want to track their gaming time and expenses, can conveniently use this website. Gaming platforms are disconnected from each other, users cannot connect with people from another platform even they play the same game. GameLog provides a unique experience for gamers to connect, play and analyze.</p>
+    <div class="btn-group">
+        <a href="{% url 'login' %}">Already a member? Log in!</a>
+        <a href="{% url 'signup' %}">Sign up now!</a>
+    </div>
+</div>
+{% endif %}
+{% endblock %}

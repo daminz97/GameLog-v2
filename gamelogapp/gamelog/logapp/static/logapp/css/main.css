@@ -1,0 +1,84 @@
+
+.logout-content {
+    background-color: #E67E22;
+    width: 70%;
+    margin-left: auto;
+    margin-right: auto;
+    text-align: center;
+    vertical-align: middle;
+    height: 75vh;
+}
+.intro {
+    margin: 2% 10%;
+}
+.btn-group {
+    text-align: center;
+    margin: 4% 0;
+}
+.btn-group a {
+    font-size: 1.2rem;
+    border: 2px solid #000000;
+    background-color: #fff;
+    border-radius: 25px;
+    margin: 2%;
+    padding: 1%;
+    font-weight: bold;
+    text-decoration: none;
+    color: #000;
+    transition: ease 0.3s;
+}
+.btn-group a:hover {
+    background-color: #000;
+    color: #fff;
+}
+.platform-icon {
+    width: 20%;
+    margin-top: auto;
+    margin-bottom: auto;
+}
+table {
+    width: 70%;
+}
+.game-list {
+    margin: auto 2%;
+}
+
+@media only screen and (max-width: 768px) {
+    /* login index */
+    .game-list {
+        width: 90%;
+        display: block;
+        margin: 2% auto;
+        padding: 5%;
+    }
+    .platform-icon {
+        margin: 3% 0;
+    }
+    .game-item {
+        text-decoration: none;
+        color: #ffffff;
+        width: 50%;
+        font-size: 1rem;
+    }
+    .rating-group {
+        position: absolute;
+        text-align: center;
+        width: 35%;
+        right: 0;
+    }
+    /* logout content */
+    .logout-content {
+        width: 90%;
+        height: fit-content;
+        padding: 5%;
+        margin: 5% auto;
+    }
+    .btn-group a {
+        text-align: center;
+        margin: 4% 0;
+        display: block;
+        background-color: #fff;
+        color: #000;
+        border-radius: 25px;
+    }
+}

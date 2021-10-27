@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    {% load static %}
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"/>
+    <link rel="stylesheet" href="{% static 'logapp/css/base.css' %}">
+    {% block title %}
+    {% endblock %}
+
+    {% block css %}
+    {% endblock %}
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="{% static 'logapp/js/base_ajax.js' %}"></script>
+    {% block ref %}
+    {% endblock %}
+</head>
+
+<body>
+    <ul class="nav-bar-list" id="nav-bar-list">
+        <li class="nav-link"><a href="{% url 'index' %}">Home</a></li>
+        <li class="nav-link"><a href="{% url 'games' %}">Games</a></li>
+        <li class="nav-link account-link">
+            <a class="user-dropdown" id="user-dropdown">
+                User
+                <div id="user-menu">
+                    <a class="user-item" href="{% url 'account' %}">Account</a>
+                    <a class="user-item" href="{% url 'dashboard' %}">Dashboard</a>
+                    {% if user.is_authenticated %}
+                    <a class="user-item" href="{% url 'logout' %}" id="signout_btn">Log out</a>
+                    {% else %}
+                    <a class="user-item" href="{% url 'login' %}">Log In</a>
+                    <a class="user-item" href="{% url 'signup' %}">Sign Up</a>
+                    {% endif %}
+                </div>
+            </a>
+        </li>
+        <!-- <li class="nav-link account-link">
+            <a class="alert-dropdown" id="alert-dropdown">
+                Alerts
+                <div id="alert-menu">
+                </div>
+            </a>
+        </li> -->
+        <li><a href="javascript:void(0);" class="menu-icon"><i class="fa fa-bars"></i></a></li>
+    </ul>
+
+    {% block content %}
+    <div class="content"></div>
+    {% endblock %}
+
+    <div class="footer">
+        <p>Copyright@GameLog</p>
+    </div>
+
+    <script src="{% static 'logapp/js/base.js' %}"></script>
+
+    {% block js %}
+    {% endblock %}
+</body>
+</html>

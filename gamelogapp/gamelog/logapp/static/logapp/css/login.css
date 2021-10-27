@@ -1,0 +1,74 @@
+.nav-link {
+    visibility: hidden;
+}
+
+#user-btn {
+    visibility: visible;
+}
+
+.login-detail {
+    text-align: center;
+}
+
+table {
+    width: 40%;
+    margin-left: auto;
+    margin-right: auto;
+    margin-bottom: 5%;
+    line-height: 2.5rem;
+}
+
+.label-item {
+    width: 40%;
+    margin: auto;
+}
+
+.label-item label {
+    width: 50%;
+    font-weight: normal;
+    font-size: 1.2rem;
+}
+
+#login_usernmae, #login_password {
+    margin: 1% 5%;
+    border: 2px solid #000000;
+    border-radius: 25px;
+    height: 2rem;
+    outline: none;
+    padding-left: 2%;
+}
+
+td input:focus::-webkit-input-placeholder {
+    visibility: hidden;
+}
+
+.login-btn {
+    width: 100%;
+    text-align: center;
+}
+
+#login-btn {
+    font-size: 1.2rem;
+    border: 2px solid #000000;
+    background-color: #fff;
+    border-radius: 25px;
+    padding: 1%;
+    font-weight: bold;
+    text-decoration: none;
+    color: #000;
+    transition: ease 0.3s;
+}
+
+#login-btn:hover {
+    background-color: #000000;
+    color: #ffffff;
+}
+
+@media only screen and (max-width: 768px) {
+    #nav-bar-list {
+        visibility: hidden;
+    }
+    table {
+        width: 95%;
+    }
+}

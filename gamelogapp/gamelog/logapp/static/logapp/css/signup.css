@@ -1,0 +1,84 @@
+.nav-link {
+    visibility: hidden;
+}
+
+.signup-content {
+    text-align: center;
+}
+
+.signup-form {
+    text-align: center;
+    margin: .5% 3%;
+}
+
+table {
+    width: 40%;
+    margin-left: auto;
+    margin-right: auto;
+    margin-bottom: 5%;
+    line-height: 2.5rem;
+}
+
+.label-item {
+    width: 40%;
+    margin: auto;
+}
+
+.label-item label {
+    font-weight: normal;
+    font-size: 1.2rem;
+}
+
+#create_region, #create_gender, #create_email, #create_fname, #create_lname, #create_username, #create_password {
+    margin: 1% 5%;
+    border: 2px solid #000000;
+    border-radius: 25px;
+    height: 2rem;
+    outline: none;
+    padding-left: 2%;
+}
+
+/* input[type=radio] {
+    margin-right: 1%;
+} */
+
+input:focus::-webkit-input-placeholder {
+    visibility: hidden;
+}
+
+#password-alert {
+    color: green;
+}
+
+.signup-btn {
+    width: 100%;
+    text-align: center;
+    margin-top: 5%;
+}
+
+#signup-btn, #signup-reset-btn {
+    display: inline-block;
+    text-decoration: none;
+    color: #000000;
+    font-weight: bold;
+    border: 2px solid #000000;
+    border-radius: 25px;
+    background-color: #ffffff;
+    padding: 1%;
+    transition: ease 0.3s;
+    font-size: 1.2rem;
+}
+
+#signup-btn:hover, #signup-reset-btn:hover {
+    background-color: #000000;
+    color: #ffffff;
+}
+
+@media only screen and (max-width: 768px) {
+    #nav-bar-list {
+        visibility: hidden;
+    }
+    table {
+        width: 95%;
+    }
+}

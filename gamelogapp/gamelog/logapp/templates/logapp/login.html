@@ -1,0 +1,38 @@
+{% extends "logapp/base.html" %}
+
+{% load static %}
+
+{% block title %}
+<title>Log In</title>
+{% endblock %}
+
+{% block css %}
+<link rel="stylesheet" href="{% static 'logapp/css/login.css' %}">
+{% endblock %}
+
+{% block content %}
+    <div class="login-form">
+        <h1 class="title">Welcome back!</h1>
+        <div class="login-detail">
+            {% if form.errors %}
+            {{ msg }}
+            {% endif %}
+            <form method="post" id="login-form">
+                {% csrf_token %}
+                <table>
+                    <tr>
+                        <td class="label-item"><label for="login_username">Username</label></td>
+                        <td><input id="login_usernmae" type="text" name="login_username"></td>
+                    </tr>
+                    <tr>
+                        <td class="label-item"><label for="login_password">Password</label></td>
+                        <td><input id="login_password" type="password" name="login_password"></td>
+                    </tr>
+                </table>
+                <div class="login-btn">
+                    <input type="submit" id="login-btn" value="Log in"></a>
+                </div>
+            </form>
+        </div>
+    </div>
+{% endblock %}

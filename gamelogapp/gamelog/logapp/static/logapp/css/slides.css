@@ -1,0 +1,106 @@
+/* slide css */
+    
+.slides-content {
+    position: relative;
+    width: 70%;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.slide-item {
+    display: none;
+    background-color: rgb(127, 153, 201, 0.8);
+    text-align: center;
+}
+
+.prev,
+.next {
+    cursor: pointer;
+    position: absolute;
+    top: 50%;
+    width: auto;
+    margin-top: -22px;
+    padding: 16px;
+    color: #ffffff;
+    font-weight: bold;
+    font-size: 18px;
+    transition: ease 0.6s;
+    border-radius: 0 3px 3px 0;
+    user-select: none;
+}
+
+.prev {
+    left: 0;
+}
+
+.next {
+    right: 0;
+    border-radius: 3px 0 0 3px;
+}
+
+.prev:hover,
+.next:hover {
+    background-color: rgb(0, 0, 0, 0.6);
+}
+
+.game-desc {
+    color: #ffffff;
+    font-size: 15px;
+    padding: 8px 12px;
+    position: absolute;
+    bottom: 8px;
+    width: 100%;
+    text-align: center;
+}
+
+.game-name {
+    color: #ffffff;
+    background-color: rgb(0, 0, 0, 0.4);
+    font-size: 2rem;
+    padding: 8px 12px;
+    position: absolute;
+    bottom: 0;
+}
+.slide-img {
+    width: auto;
+    height: 13rem;
+    object-fit: cover;
+    padding: 2%;
+    margin: auto;
+}
+
+.slide-pos {
+    text-align: center;
+}
+/* end slides */
+.pop {
+    display: inline-block;
+    width: 10rem;
+    position: absolute;
+    visibility: hidden;
+    background-color: #ffffff;
+    border: 2px solid #000000;
+    border-radius: 25px;
+    padding: 10%;
+    margin: 0 0 0 10%;
+    color: #000000;
+    text-align: left;
+    font-weight: normal;
+    z-index: 3;
+}
+
+.pop small {
+    display: block;
+}
+
+.game-list li a:hover .pop {
+    visibility: visible;
+}
+
+.game-pop-img {
+    display: block;
+}
+
+.view-more {
+    margin-top: 5%;
+}

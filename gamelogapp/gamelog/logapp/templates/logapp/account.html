@@ -1,0 +1,125 @@
+{% extends "logapp/base.html" %}
+
+{% load static %}
+
+{% block title %}
+<title>Account</title>
+{% endblock %}
+
+{% block css %}
+<link rel="stylesheet" href="{% static 'logapp/css/account.css' %}">
+{% endblock %}
+
+{% block content %}
+    <div class="account-content">
+        <h1 class="title">Account Information</h1>
+        <div id="confirm-box">
+            <div class="confirm-content">
+                <h1><i class="fa fa-check-circle"></i>Information Changed!</h1>
+                <button id="close-confirm">Close</button>
+            </div>
+        </div>
+
+        <div id="form-wrapper">
+            <form id="edit-form" method="post" enctype="multipart/form-data">
+                {% csrf_token %}
+                <h3 class="subtitle">Change Information</h3>
+
+                <table class="edit-info">
+                    <tr class="edit-row">
+                        <td><label for="region">Region</label></td>
+                        <td>
+                            <select id="new_region" name="region">
+                                <option value="Asia">Aisa</option>
+                                <option value="North America">North America</option>
+                                <option value="Europe">Europe</option>
+                                <option value="Africa">Africa</option>
+                            </select>
+                        </td>
+                    </tr>
+                    <tr class="edit-row">
+                        <td><label for="email">Email</label></td>
+                        <td><input type="text" id="new_email" name="email"></td>
+                    </tr>
+                    <tr class="edit-row">
+                        <td><label for="fname">First Name</label></td>
+                        <td><input name="fname" id="new_fname" type="text"></td>
+                    </tr>
+                    <tr class="edit-row">
+                        <td><label for="lname">Last Name</label></td>
+                        <td><input name="lname" id="new_lname" type="text"></td>
+                    </tr>
+                    <!-- <tr class="edit-row"> -->
+                        <!-- <td><label for="avatar">Select Image</label></td> -->
+                        <!-- <td>{{ form.as_p }}</td> -->
+                        <!-- <td><input type="file" id="img_select" name="avatar" value="Select"></td> -->
+                    <!-- </tr> -->
+                    <!-- <tr class="edit-row">
+                        <td><label for="password">Password</label></td>
+                        <td><input name="password" id="new_password" type="password"></td>
+                    </tr> -->
+                </table>
+
+                <div class="account-btn-group">
+                    <input class="account-btn" type="submit" id="submit" value="Submit">
+                    <input class="account-btn" type="reset" id="reset" value="Reset">
+                </div>
+            </form>
+        </div>
+
+        <div id="img-box">
+            <div id="img-content">
+                <form method="post" action="{% url 'update_profile' %}" enctype="multipart/form-data">
+                    {% csrf_token %}
+                    <h3 class="form-title">Select a local file</h3>
+                    {{ form.as_p }}
+                    <button type="submit" id="img_submit">Upload</button>
+                </form>
+            </div>
+        </div>
+
+        <div class="account-info">
+            <div class="row">
+                <div class="user-info">
+                    <table>
+                        <tr class="info-row">
+                            <td><label>Username</label></td>
+                            <td><span id="username">{{ username }}</span></td>
+                        </tr>
+                        <tr class="info-row">
+                            <td><label>Region</label></td>
+                            <td><span id="region">{{ region }}</span></td>
+                        </tr>
+                        <tr class="info-row">
+                            <td><label>Email</label></td>
+                            <td>
+                                <span id="email">{{ email }}</span>
+                            </td>
+                        </tr>
+                        <tr class="info-row">
+                            <td><label>First Name</label></td>
+                            <td>
+                                <span id="fname">{{ fname }}</span>
+                            </td>
+                        </tr>
+                        <tr class="info-row">
+                            <td><label>Last Name</label></td>
+                            <td>
+                                <span id="lname">{{ lname }}</span>
+                            </td>
+                        </tr>
+                    </table>
+                </div>
+
+                <div class="account-icon">
+                    <a id="img-selector"><img id="user-icon" src="{{ avatar.url }}" alt="user-icon"></a>
+                </div>
+            </div>
+
+            <div class="account-btn-group">
+                <a class="account-btn" id="edit" href="#">Edit</a>
+            </div>
+        </div>
+    </div>
+{% endblock %}
+

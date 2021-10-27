@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="./css/main.css">
+    <link rel="stylesheet" href="./css/comm.css">
+    <title>DEMO</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+
+</head>
+
+<body>
+    <ul class="nav-bar-list" id="nav-bar-list">
+        <li class="nav-link"><a href="./login-index.html">Home</a></li>
+        <li class="nav-link"><a href="./games.html">Games</a></li>
+        <li class="nav-link active"><a href="./community.html">Community</a></li>
+        <li class="nav-link account-link">
+            <a class="user-dropdown" id="user-dropdown" onclick="toggleMenu()">User</a>
+            <div id="user-menu">
+                <a class="user-item" href="./account.html">Account</a>
+                <a class="user-item" href="./dashboard.html">Dashboard</a>
+                <a class="user-item" href="./index.html">Log Out</a>
+            </div>
+        </li>
+        <li class="nav-link account-link">
+            <a class="alert-dropfown" id="alert-dropdown" onclick="toggleAlert()">Alerts</a>
+            <div id="alert-menu">
+            </div>
+        </li>
+        <li><a href="javascript:void(0);" class="menu-icon"><i class="fa fa-bars"></i></a></li>
+    </ul>
+
+    <div class="comm-content">
+        <h1 class="title">Community</h1>
+        <div class="activities">
+            <h3 class="subtitle">Recent Activities</h3>
+            <div class="card-group" id="card-group">
+                <div class="card">
+                    <div class="card-content">
+                        <div class="row">
+                            <i class="card-img fa fa-user-circle"></i>
+                            <p class="card-info">Cuihua (Xbox) han ni chi fan le!</p>
+                        </div>
+                        <span class="card-date">08/19/2021</span>
+                        <div class="card-btn-group">
+                            <a class="card-btn" href="">Reject</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+    <div class="footer">
+        <p>Copyright @ GameLog</p>
+    </div>
+
+    <script src="./js/main.js"></script>
+    <script src="./js/comm.js"></script>
+</body>
+
+</html>

@@ -1,0 +1,26 @@
+{% load static %}
+
+<ul class="game-list" id="platform-game-list">
+    {% if error %}
+    <p>{{ error }}</p>
+    {% endif %}
+
+    {% for game in game_list %}
+    <li class="game-list-item">
+        <div class="row">
+            <img class="game-img" src="{% static 'logapp/img/steam.svg' %}">
+            <div class="game-link">
+                <a class="game-item" href="{% url 'game_detail' game.platform game.id %}">{{ game.name }}</a>
+            </div>
+            <div class="game-rating">
+                <span class="fa fa-star checked"></span>
+                <span class="fa fa-star checked"></span>
+                <span class="fa fa-star checked"></span>
+                <span class="fa fa-star"></span>
+                <span class="fa fa-star"></span>
+            </div>
+            <p class="game-tags">{{ game.genre }} | {{ game.theme }}</p>
+        </div>
+    </li>
+    {% endfor %}
+</ul>

@@ -1,0 +1,77 @@
+    .game-info {
+        width: 55%;
+        background-color: green;
+        padding: 2em;
+        height: fit-content;
+        margin-right: 1%;
+    }
+    
+    .user-log {
+        width: 45%;
+        background-color: orange;
+        padding: 2em;
+        height: fit-content;
+        margin-left: 1%;
+    }
+    
+    .game-title {
+        width: 70%;
+    }
+    
+    .game-plat {
+        width: 5%;
+    }
+    
+    .game-rating {
+        margin: auto 0;
+    }
+    
+    .game-detail {
+        font-size: .8rem;
+        margin: 0 .5%;
+    }
+    .game-img {
+        width: 60%;
+    }
+    .get-game {
+        margin-top: 5%;
+    }
+    .log-subtitle {
+        border-bottom: 1px solid #000000;
+        width: fit-content;
+        margin: 5% 0 3% 0;
+    }
+    
+    .reward-img img {
+        width: 30%;
+    }
+    
+    @media only screen and (max-width: 768px) {
+        .game-info,
+        .user-log {
+            width: 80%;
+            display: block;
+            margin: 5% auto;
+        }
+        .log-subtitle {
+            margin: 5% 0;
+        }
+        .reward-img img {
+            display: inline-block;
+            margin: 3% 3%;
+        }
+        canvas,
+        legend {
+            width: 100%;
+            display: inline-block;
+            margin: 5% auto;
+            text-align: center;
+        }
+        legend {
+            text-align: left;
+        }
+        #time-comment,
+        #cost-comment {
+            margin: 3% 0;
+        }
+    }

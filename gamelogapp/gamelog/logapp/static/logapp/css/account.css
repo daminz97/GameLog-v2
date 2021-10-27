@@ -1,0 +1,292 @@
+.account-content {
+    width: 100%;
+    margin: 5% auto;
+}
+
+.title {
+    width: 100%;
+}
+
+.account-info {
+    width: 100%;
+    margin: 0;
+    padding: 0;
+    text-align: center;
+    overflow: visible;
+}
+
+.user-info {
+    width: 60%;
+    height: fit-content;
+    margin: auto;
+}
+
+.user-info table {
+    margin: auto;
+    vertical-align: middle;
+}
+
+.info-row td label {
+    border-bottom: 1px solid #000;
+    width: fit-content;
+}
+
+.info-row td select {
+    margin: 1% 10%;
+    width: 60%;
+    border: 2px solid #000000;
+    border-radius: 25px;
+    height: 2rem;
+    outline: none;
+}
+
+.info-row td input[type=text],
+.info-row td input[type=password],
+.info-row td input[type=email] {
+    margin: 1% 10%;
+    width: 60%;
+    border: 2px solid #000000;
+    border-radius: 25px;
+    height: 2rem;
+    outline: none;
+}
+
+.info-row td input:focus {
+    background-color: thistle;
+}
+
+.account-icon {
+    width: 40%;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+#user-icon {
+    width: 15rem;
+    height: 15rem;
+    border-radius: 50%;
+}
+
+.account-btn-group {
+    text-align: center;
+    width: 100%;
+    margin: 5% 0;
+}
+
+.account-btn {
+    text-decoration: none;
+    border: 2px solid #000000;
+    border-radius: 25px;
+    padding: 1%;
+    margin: 0 2%;
+}
+
+#form-wrapper {
+    display: none;
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    width: 100%;
+    height: fit-content;
+    z-index: 1;
+    overflow: auto;
+    text-align: center;
+    transform: translate(-50%, -50%);
+}
+
+.subtitle {
+    margin-bottom: 2%;
+}
+
+#edit-form {
+    display: block;
+    text-align: left;
+    border-radius: 25px;
+    background-color: #fff;
+    width: 40%;
+    padding: 3%;
+    margin: auto;
+}
+
+.edit-info {
+    width: 100%;
+    margin: 0 auto;
+}
+
+.edit-row td select {
+    margin: 1% 10%;
+    border: 2px solid #000000;
+    border-radius: 25px;
+    height: 2rem;
+    outline: none;
+}
+
+.edit-row td input[type=text],
+.edit-row td input[type=password],
+.edit-row td input[type=email] {
+    margin: 1% 10%;
+    border: 2px solid #000000;
+    border-radius: 25px;
+    height: 2rem;
+    outline: none;
+    padding-left: 2%;
+}
+
+.edit-row td input:focus {
+    background-color: thistle;
+}
+
+#edit {
+    font-size: 1.2rem;
+    background-color: #fff;
+    color: #000;
+    padding: 1%;
+    font-weight: bold;
+    transition: ease .3s;
+}
+
+#edit:hover {
+    background-color: #000;
+    color: #fff;
+}
+
+#submit {
+    font-size: 1.2rem;
+    background-color: green;
+    color: #ffffff;
+    padding: 1%;
+    transition: ease .3s;
+    font-weight: bold;
+}
+
+#submit:hover {
+    background-color: #ffffff;
+    color: #000000;
+}
+
+#reset {
+    font-size: 1.2rem;
+    background-color: yellow;
+    color: #000000;
+    padding: 1%;
+    transition: ease .3s;
+    font-weight: bold;
+}
+
+#reset:hover {
+    background-color: #ffffff;
+    color: #000000;
+}
+
+#confirm-box {
+    display: none;
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    width: 100%;
+    transform: translate(-50%, -50%);
+    height: fit-content;
+    z-index: 1;
+    overflow: auto;
+    text-align: center;
+}
+
+.confirm-content {
+    margin: auto;
+    background-color: #fff;
+    border-radius: 25px;
+    width: 40%;
+    padding: 3%;
+}
+
+.fa-check-circle {
+    color: green;
+    margin-right: 2%;
+}
+
+.form-title {
+    margin-bottom: 5%;
+}
+
+#img_submit,
+#close-confirm {
+    font-size: 1.2rem;
+    font-weight: bold;
+    border-radius: 25px;
+    border: 2px solid #000000;
+    padding: 1%;
+    background-color: #fff;
+    transition: ease 0.3s;
+    margin-top: 5%;
+}
+
+#img_submit:hover,
+#close-confirm:hover {
+    background-color: #000;
+    color: #fff;
+}
+
+#img-box {
+    display: none;
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 100%;
+    height: fit-content;
+    z-index: 1;
+    overflow: auto;
+    text-align: center;
+}
+
+#img-content {
+    margin: 0 auto;
+    background-color: #fff;
+    border-radius: 25px;
+    width: 40%;
+    padding: 3%;
+}
+
+.fa-plus-circle {
+    color: #000000;
+    font-size: 4rem;
+}
+
+@media screen and (max-width: 768px) {
+    .user-info {
+        width: 100%;
+        display: block;
+        text-align: center;
+        margin: 5% auto 5% auto;
+    }
+    .user-info table {
+        margin: auto;
+    }
+    .info-row {
+        text-align: center;
+        width: 100%;
+        margin: auto;
+    }
+    .account-icon {
+        display: block;
+        width: 100%;
+    }
+    #user-icon {
+        width: 80%;
+        margin: 5% auto;
+    }
+    #edit-form {
+        width: 80%;
+        margin: auto;
+    }
+    .confirm-content {
+        width: 80%;
+        margin: auto;
+        line-height: 3em;
+    }
+    #img-content {
+        width: 80%;
+        text-align: center;
+        line-height: 3em;
+    }
+}

@@ -1,0 +1,48 @@
+{% extends "logapp/base.html" %}
+
+{% load static %}
+
+{% block title %}
+<title>Dashboard</title>
+{% endblock %}
+
+{% block css %}
+<link rel="stylesheet" href="{% static 'logapp/css/dashboard.css' %}">
+{% endblock %}
+
+
+{% block content %}
+    <div class="dashboard-content">
+        <h1 class="title">Dashboard</h1>
+        <div class="account-group">
+            <a class="account-item" href="#">Steam</a>
+            <a class="account-item" href="#">Nintendo</a>
+            <a class="account-item" href="#">PlayStation</a>
+            <a class="account-item" href="#">Xbox</a>
+        </div>
+
+        <div class="analytics">
+            <h3 class="subtitle">Analytics</h3>
+            <div class="row">
+                <div class="row">
+                    <canvas id="bar-chart"></canvas>
+                    <legend for="myCanvas"></legend>
+                </div>
+                <div class="row">
+                    <canvas id="pie-chart"></canvas>
+                    <legend id="myLegend"></legend>
+                </div>
+            </div>
+            <div id="cost-comment"></div>
+        </div>
+
+        <div class="activities">
+            <h3 class="subtitle">Activities</h3>
+            <div id="activities-item"></div>
+        </div>
+    </div>
+{% endblock %}
+
+{% block js %}
+<script src="{% static 'logapp/js/dashboard.js' %}"></script>
+{% endblock %}

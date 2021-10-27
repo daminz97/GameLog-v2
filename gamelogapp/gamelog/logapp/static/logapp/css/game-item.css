@@ -1,0 +1,53 @@
+.game-list {
+    width: 60%;
+    height: fit-content;
+    background-color: tomato;
+    margin: 1% auto;
+    padding: 2% 2%;
+    vertical-align: middle;
+    list-style: none;
+    overflow: visible;
+    z-index: 1;
+}
+.game-list li a {
+    display: inline;
+    position: relative;
+}
+.game-item {
+    text-decoration: none;
+    color: #ffffff;
+    width: 40%;
+}
+.game-item:hover {
+    color: thistle;
+    border-bottom: 1px solid thistle;
+}
+.rating-group {
+    text-align: right;
+    width: 40%;
+}
+.checked {
+    color: orange;
+}
+
+@media only screen and (max-width: 768px) {
+    /* login index */
+    .game-list {
+        width: 90%;
+        display: block;
+        margin: 2% auto;
+        padding: 5%;
+    }
+    .game-item {
+        text-decoration: none;
+        color: #ffffff;
+        width: 50%;
+        font-size: 1rem;
+    }
+    .rating-group {
+        position: absolute;
+        text-align: center;
+        width: 35%;
+        right: 0;
+    }
+}
