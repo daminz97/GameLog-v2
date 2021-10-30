@@ -129,7 +129,7 @@ def new_profile(request):
             if form.is_valid():
                 request.user.profile.avatar = form.cleaned_data['avatar']
                 request.user.profile.save()
-                return redirect('/logapp/account/')
+                return redirect('account')
 
 @login_required(login_url='/logapp/login')
 def dashboard(request):
@@ -192,7 +192,7 @@ def update_budget(request):
 
 def logout_view(request):
     logout(request)
-    return redirect('/logapp/')
+    return redirect('')
 
 def login_view(request):
     username = request.POST.get('login_username', '')
@@ -200,7 +200,7 @@ def login_view(request):
     user = authenticate(request, username=username, password=password)
     if user:
         login(request, user)
-        return redirect('/logapp/')
+        return redirect('')
     else:
         response = {
             'msg': "Invalid Username or Password."
@@ -209,7 +209,7 @@ def login_view(request):
 
 def signup(request):
     if request.user.is_authenticated:
-        return redirect('/logapp/')
+        return redirect('')
     if request.method == "POST":
         region = request.POST['create_region']
         gender = request.POST['create_gender']
@@ -223,7 +223,7 @@ def signup(request):
         user.save()
         profile = Profile(user=user,region=region, gender=gender)
         profile.save()
-        return redirect('/logapp/login/')
+        return redirect('login')
     else:
         return render(request, 'logapp/signup.html')
 
