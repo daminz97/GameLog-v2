@@ -38,7 +38,7 @@ class Game(models.Model):
     date = models.DateField()
     genre = models.CharField(max_length=50, choices=GENRES)
     theme = models.CharField(max_length=50, choices=THEMES)
-    image = models.ImageField(upload_to='game_images/', default='game_images/IMG_2337.JPG', blank=True)
+    image = models.CharField(max_length=10000)
 
     REQUIRED_FIELDS = ['name','platform','model','publisher','date', 'genre', 'theme']
 
