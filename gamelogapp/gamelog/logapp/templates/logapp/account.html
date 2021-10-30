@@ -49,31 +49,22 @@
                         <td><label for="lname">Last Name</label></td>
                         <td><input name="lname" id="new_lname" type="text"></td>
                     </tr>
-                    <!-- <tr class="edit-row"> -->
-                        <!-- <td><label for="avatar">Select Image</label></td> -->
-                        <!-- <td>{{ form.as_p }}</td> -->
-                        <!-- <td><input type="file" id="img_select" name="avatar" value="Select"></td> -->
-                    <!-- </tr> -->
-                    <!-- <tr class="edit-row">
-                        <td><label for="password">Password</label></td>
-                        <td><input name="password" id="new_password" type="password"></td>
-                    </tr> -->
                 </table>
 
                 <div class="account-btn-group">
-                    <input class="account-btn" type="submit" id="submit" value="Submit">
-                    <input class="account-btn" type="reset" id="reset" value="Reset">
+                    <button class="account-btn" type="submit" id="edit_profile_submit">Submit</button>
+                    <button class="account-btn" type="reset" id="edit_profile_reset">Reset</button>
                 </div>
             </form>
         </div>
 
         <div id="img-box">
             <div id="img-content">
-                <form method="post" action="{% url 'update_profile' %}" enctype="multipart/form-data">
+                <form method="post" action="{% url 'new_profile' %}" enctype="multipart/form-data">
                     {% csrf_token %}
                     <h3 class="form-title">Select a local file</h3>
                     {{ form.as_p }}
-                    <button type="submit" id="img_submit">Upload</button>
+                    <button class="account-btn" type="submit" id="img_submit">Upload</button>
                 </form>
             </div>
         </div>
@@ -117,7 +108,7 @@
             </div>
 
             <div class="account-btn-group">
-                <a class="account-btn" id="edit" href="#">Edit</a>
+                <button class="account-btn" id="edit">Edit</button>
             </div>
         </div>
     </div>

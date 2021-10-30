@@ -1,0 +1,17 @@
+{% load static %}
+
+{% if for_time %}
+    {% if exceed_time %}
+    <p class="exceed_budget">Your current time limit is {{ time_budget }}hrs, your played time exceed!</p>
+    {% else %}
+    <p class="below_budget">Your current time limit is {{ time_budget }}hrs, your played time doesn't exceed!</p>
+    {% endif %}
+{% endif %}
+
+{% if for_budget %}
+    {% if exceed_budget %}
+    <p class="exceed_budget">Your current budget is ${{ budget }}, your expenses exceed!</p>
+    {% else %}
+    <p class="below_budget">Your current budget is ${{ budget }}, your expenses doesn't exceed!</p>
+    {% endif %}
+{% endif %}

@@ -1,10 +1,6 @@
 {% load static %}
 
 <ul class="game-list" id="platform-game-list">
-    {% if error %}
-    <p>{{ error }}</p>
-    {% endif %}
-
     {% for game in game_list %}
     <li class="game-list-item">
         <div class="row">

@@ -197,3 +197,49 @@ function drawGraph() {
 }
 
 drawGraph();
+
+
+$(document).ready(function() {
+    // get retail price
+    var previewUrl = "http://api.steampowered.com/ISteamApps/GetAppList/v0002/?key=C919805BD39CC41E796AFE30BACE9E33&format=json";
+    $.ajax({
+        type: 'GET',
+        crossDomain: true,
+        url: previewUrl,
+        success: async function(data) {
+            const app_list = data['applist']['apps'];
+            var game_name = JSON.parse(document.getElementById('game_detail').textContent);
+            var game_image = JSON.parse(document.getElementById('game_image').textContent);
+            var price = 0;
+            var steam_id= 0;
+            var image;
+            for (let i in app_list) {
+                if (app_list[i]['name'] === game_name) {
+                    steam_id = app_list[i]['appid'];
+                    break;
+                }
+            };
+            await $.getJSON('https://store.steampowered.com/api/appdetails?appids='+steam_id+'&cc=us&l=en', function(info) {
+                price = info[steam_id]['data']['price_overview']['final_formatted'];
+                image = info[steam_id]['data']['header_image'];
+            });
+            let game_url = 'https://store.steampowered.com/app/'+steam_id;
+            $('#game_retail_list').append(
+                $('<tr>').append(
+                    $('<td>', {class: 'store-name'}).append(
+                        $('<a>', {href: game_url, target: '_blank'}).append('Steam')
+                    ),
+                    $('<td>', {class: 'price'}).append(price),
+                )
+            );
+            if (image !== null) {
+                $('#game-img').attr('src', image);
+            } else {
+                $('#game-img').attr('src', game_image);
+            }
+        },
+        error: function(e) {
+            console.log(e.message);
+        }
+    });
+})

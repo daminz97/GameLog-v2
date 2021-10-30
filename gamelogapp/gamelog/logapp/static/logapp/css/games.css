@@ -37,33 +37,47 @@
         outline: none;
     }
 
-    #add_game_platform,
-    #add_game_genre,
-    #add_game_theme,
-    input[type=text],
-    input[type=date] {
+    /* add game form */
+    #search_game,
+    #add_game {
+        padding: 10%;
+    }
+
+    #search_form label,
+    #add_game_form p label {
+        width: 30%;
+        display: inline-block;
+        font-size: 1rem;
+    }
+
+    #search_form input,
+    #search_form select,
+    #add_game_form p input,
+    #add_game_form p select {
+        width: 60%;
+        display: inline-block;
+
+        box-sizing: border-box;
+    }
+
+    #id_search_name,
+    #id_search_platform,
+    #id_search_genre,
+    #id_search_theme,
+    #id_name,
+    #id_platform,
+    #id_publisher,
+    #id_date,
+    #id_genre, 
+    #id_theme {
         display: block;
-        width: 70%;
+        width: 100%;
         margin: 3% auto;
         text-align: center;
         border: 2px solid #000000;
         border-radius: 25px;
         height: 2rem;
         outline: none;
-    }
-    
-    table tr td input[type=search]:focus,
-    input[type=text]:focus,
-    input[type=date]:focus {
-        background-color: rgb(127, 153, 201, 0.8);
-    }
-
-    #add_game_platform,
-    #add_game_genre,
-    #add_game_theme,
-    input[type=text]:focus,
-    input[type=date]:focus {
-        background-color: rgb(127, 153, 201, 0.8);
     }
 
     input {
@@ -72,12 +86,13 @@
     
     .filter-btn-group {
         padding: 2%;
-        margin-bottom: 5%;
+        margin-top: 5%;
+        margin-bottom: 3%;
         text-align: center;
     }
     
     .filter-btn {
-        text-decoration: none;
+        width: 70px;
         font-weight: bold;
         color: #000000;
         background-color: #ffffff;

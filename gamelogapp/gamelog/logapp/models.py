@@ -2,6 +2,7 @@ from django.db import models
 from django import forms
 from django.contrib.auth.models import User
 from django.db.models.fields.related import OneToOneField
+import datetime
 
 # Create your models here.
 
@@ -41,6 +42,9 @@ class Game(models.Model):
 
     REQUIRED_FIELDS = ['name','platform','model','publisher','date', 'genre', 'theme']
 
+    def __str__(self):
+        return self.name + ' on ' + self.platform
+
 
 class Profile(models.Model):
     REGION_CHOICES = [
@@ -55,33 +59,30 @@ class Profile(models.Model):
     avatar = models.ImageField(upload_to='user_images/', default='user_images/image0.jpg', blank=True)
 
     REQUIRED_FIELDS = ['region', 'gender']
-    # last_modified = models.DateTimeField(auto_now=True)
-    # xbox_link = models.BooleanField()
-    # ps_link = models.BooleanField()
-    # nin_link = models.BooleanField()
-    # steam_link = models.BooleanField()
 
-# class GameLog(models.Model):
-#     user = models.ForeignKey(User, on_delete=models.PROTECT)
-#     game = models.ForeignKey(Game, on_delete=models.PROTECT)
-#     hour = models.FloatField()
-#     cost = models.FloatField()
+    def __str__(self):
+        return 'Profile: ' + self.user.username
 
+class Budget(models.Model):
+    user = OneToOneField(User, on_delete=models.CASCADE)
+    budget = models.FloatField(default=0.0)
+    expense = models.FloatField(default=0.0)
+    time_budget = models.FloatField(default=0.0)
+    played_time = models.FloatField(default=0.0)
 
-# class CustomizeUserCreationForm(UserCreationForm):
-#     region = forms.CharField(max_length=50)
-#     gender = forms.CharField(max_length=50)
-#     fname = forms.CharField(max_length=50)
-#     lname = forms.CharField(max_length=50)
-#     email = forms.CharField(max_length=100)
+    REQUIRED_FIELDS = ['budget', 'expense', 'time_budget', 'played_time']
 
-#     class Meta(UserCreationForm.Meta):
-#         model = GameUser
-    
-#     def save(self, commit=True):
-#         if not commit:
-#             raise NotImplementedError("Can't create profile")
-#         user = super(UserCreationForm, self).save(commit=True)
-#         game_user = GameUser(user=user, region=self.cleaned_data['region'], gender=self.cleaned_data['gender'])
-#         game_user.save()
-#         return user, game_user
+    def __str__(self):
+        return 'Budget: ' + self.user.username
+
+class Log(models.Model):
+    user = models.ForeignKey(User, on_delete=models.CASCADE)
+    game = models.ForeignKey(Game, on_delete=models.CASCADE)
+    time = models.FloatField(default=0.0)
+    cost = models.FloatField(default=0.0)
+    log_time = models.DateField(default=datetime.date.today)
+
+    REQUIRED_FIELDS = ['user', 'game', 'time', 'cost', 'log_time']
+
+    def __str__(self):
+        return 'Log: ' + self.user.username + ' on ' + self.game.name

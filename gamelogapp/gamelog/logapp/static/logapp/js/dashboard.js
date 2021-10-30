@@ -1,12 +1,25 @@
 // draw pie chart
 function drawPie() {
     var plotCost = document.getElementById("pie-chart");
+    const costs = JSON.parse(document.getElementById('costs').textContent);
+
     var gamingCost = {
-        "Xbox": 40,
-        "Steam": 15,
-        "Nintendo": 36,
-        "PlayStation": 30
+        "Xbox": 0,
+        "Steam": 0,
+        "Nintendo": 0,
+        "PlayStation": 0,
     };
+    for (let i in costs) {
+        if (costs[i]['platform'] == 'Xbox') {
+            gamingCost['Xbox'] = costs[i]['num'];
+        } else if (costs[i]['platform'] == 'Steam') {
+            gamingCost['Steam'] = costs[i]['num'];
+        } else if (costs[i]['platform'] == 'PlayStation') {
+            gamingCost['PlayStation'] = costs[i]['num']
+        } else {
+            gamingCost['Nintendo'] = costs[i]['num']
+        }
+    }
 
     function drawPieSlice(ctx, centerX, centerY, radius, startAngle, endAngle, color) {
         ctx.fillStyle = color;
@@ -17,8 +30,6 @@ function drawPie() {
         ctx.fill();
         ctx.stroke();
     }
-
-    var budgetLimit = 700;
 
     var PieChart = function(options) {
         this.options = options;
@@ -61,31 +72,13 @@ function drawPie() {
                 }
                 this.options.legend.innerHTML = legendHTML;
             }
-
-            // add comments
-            const plats = ["Nintendo", "Xbox", "Steam", "PlayStation"];
-            for (var plat in plats) {
-                var curSpent = this.options.data[plats[plat]];
-                var percentage = Math.round(curSpent / total_value * 100);
-                $("#cost-comment").append($("<p>").text("You have spent $" + curSpent + " on " + plats[plat] + " games, " + percentage + "% of your total expense."));
-            }
-
-            // calc budget
-            if (total_value > budgetLimit) {
-                $("#cost-comment").append($("<p>").text("Your current budget is $" + budgetLimit + ", you have spent over your budget!").css('color', "red"));
-            } else {
-                $("#cost-comment").append($("<p>").text("Your current budget is $" + budgetLimit + ", you have spent less than your budget!").css('color', "green"));
-            }
-
-            // change budget
-            $("#cost-comment").append($("<p>").text("Change my budget to $").append($("<input>", { class: "budget-input", type: "text" })).append($("<button>", { class: "budget-btn" }).text("Confirm")));
         }
     }
 
     var myPieChart = new PieChart({
         canvas: plotCost,
         data: gamingCost,
-        colors: ["#fde23e", "#f16e23", "#57d9ff", "#937e88"],
+        colors: ["#cbeabd", "#aec6a5", "#769174", "#b1af96", "#91887b"],
         legend: myLegend
     });
     myPieChart.draw();
@@ -97,6 +90,18 @@ drawPie();
 // draw line chart
 function drawGraph() {
     var myCanvas = document.getElementById("bar-chart");
+    const times = JSON.parse(document.getElementById('times').textContent);
+
+    months = ['January', 'Feburary', 'March', 'April', 'May', 'June', 'July', 
+                'August', 'September', 'October', 'November', 'December'];
+    
+    first_month = Object.keys(times)[0];
+    last_month = Object.keys(times)[-1];
+    for (let i=months.indexOf(first_month); i<months.indexOf(last_month); i++) {
+        if (!times.hasOwnProperty(months[i])) {
+            times[months[i]] = 0.0;
+        }
+    };
 
     function drawLine(ctx, startX, startY, endX, endY, color) {
         ctx.save();
@@ -114,14 +119,6 @@ function drawGraph() {
         ctx.fillRect(upperLeftCornerX, upperLeftCornerY, width, height);
         ctx.restore();
     }
-
-    var myData = {
-        "July": 10,
-        "August": 30.5,
-        "September": 24,
-        "October": 29.4,
-        "November": 18.7
-    };
 
     var Barchart = function(options) {
         this.options = options;
@@ -192,10 +189,6 @@ function drawGraph() {
                 ul.append(li);
                 barIndex++;
             }
-
-            // add comments
-            var curMonthTime = this.options.data["September"];
-            $("#time-comment").append($("<p>").text("You have played this game for " + curMonthTime + " hours this month."));
         }
     }
 
@@ -204,8 +197,8 @@ function drawGraph() {
         padding: 10,
         gridScale: 5,
         gridColor: "#eeeeee",
-        data: myData,
-        colors: ["#a55ca5", "#67b6c7", "#bccd7a", "#eb9743"]
+        data: times,
+        colors: ["#cbeabd", "#aec6a5", "#769174", "#b1af96", "#91887b"]
     });
     myBarchart.draw();
 }
@@ -217,14 +210,16 @@ var prev;
 $(".account-item").hover(
     function() {
         prev = $(this).text();
-        $(this).text("Link");
+        $(this).text("Add Log");
+        $(this).attr('width', '25px');
+        $(this).attr('height', '25px');
     },
     function() {
         $(this).text(prev);
     }
 );
 $(".account-item").on("click", function() {
-    $(this).text("Unlink");
+    // $(this).text("Unlink");
 });
 
 // activities

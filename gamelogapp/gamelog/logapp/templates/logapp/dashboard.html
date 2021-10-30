@@ -15,25 +15,51 @@
     <div class="dashboard-content">
         <h1 class="title">Dashboard</h1>
         <div class="account-group">
-            <a class="account-item" href="#">Steam</a>
-            <a class="account-item" href="#">Nintendo</a>
-            <a class="account-item" href="#">PlayStation</a>
-            <a class="account-item" href="#">Xbox</a>
+            <div class="account-item-box"><a class="account-item" href="#">Steam</a></div>
+            <div class="account-item-box"><a class="account-item" href="#">Nintendo</a></div>
+            <div class="account-item-box"><a class="account-item" href="#">PlayStation</a></div>
+            <div class="account-item-box"><a class="account-item" href="#">Xbox</a></div>
         </div>
 
         <div class="analytics">
             <h3 class="subtitle">Analytics</h3>
             <div class="row">
                 <div class="row">
-                    <canvas id="bar-chart"></canvas>
+                    <canvas id="bar-chart">{{ times|json_script:"times" }}</canvas>
                     <legend for="myCanvas"></legend>
                 </div>
                 <div class="row">
-                    <canvas id="pie-chart"></canvas>
+                    <canvas id="pie-chart">{{ costs|json_script:"costs" }}</canvas>
                     <legend id="myLegend"></legend>
                 </div>
             </div>
-            <div id="cost-comment"></div>
+            <div class="row">
+                <div id="time-comment">
+                    {% for key, value in times.items %}
+                    <p>You have played {{ value }}hrs in {{ key }}.</p>
+                    {% endfor %}
+                    <div id="exceed_time">
+                        {% include "logapp/exceed_update.html" %} 
+                    </div>
+                    <p id="update_time_budget">
+                        Change my time limit to 
+                        <input type="number" class="budget_input" id="new_time_budget">hrs
+                        <button type="submit" class="budget_submit" id="time_budget_submit">Confirm</button>
+                </div>
+                <div id="cost-comment">
+                    {% for cost in costs %}
+                    <p>You have spent ${{ cost.num }} on {{ cost.platform }} games, {{ cost.perct }}% of total expense.</p>
+                    {% endfor %}
+                    <div id="exceed_budget">
+                        {% include "logapp/exceed_update.html" %}
+                    </div>
+                    <p id="update_budget">
+                        Change my budget to $
+                        <input type="number" class="budget_input" id="new_budget">
+                        <button type="submit" class="budget_submit" id="budget_submit">Confirm</button>
+                    </p>
+                </div>
+            </div>
         </div>
 
         <div class="activities">
@@ -44,5 +70,8 @@
 {% endblock %}
 
 {% block js %}
+<!-- pass data to javascript -->
+<script id="times" type="application/json">{ "times": times }</script>
+<script id="costs" type="application/json">{ "costs": costs }</script>
 <script src="{% static 'logapp/js/dashboard.js' %}"></script>
 {% endblock %}

@@ -15,110 +15,26 @@
 {% block content %}
     <div class="row">
         <div class="filter-content">
-            <form method="get" id="search_form">{% csrf_token %}
-                <table>
-                    <tr>
-                        <td><label>Platform</label></td>
-                        <td class="input-box">
-                            <select name="platform" id="search_platform">
-                                <option value=""></option>
-                                <option value="Steam">Steam</option>
-                                <option value="PlayStation">Playstation</option>
-                                <option value="Nintendo">Nintendo</option>
-                                <option value="Xbox">Xbox</option>
-                            </select>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td><label>Genres</label></td>
-                        <td class="input-box">
-                            <select name="genre" id="search_genre">
-                                <option value=""></option>
-                                <option value="Action">Action</option>
-                                <option value="Role-Playing">Role-Playing</option>
-                                <option value="Strategy">Strategy</option>
-                                <option value="Adventure">Adventure</option>
-                                <option value="Casual">Casual</option>
-                                <option value="Simulation">Simulation</option>
-                                <option value="Sports">Sports</option>
-                            </select>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td><label>Themes</label></td>
-                        <td class="input-box">
-                            <select name="theme" id="search_theme">
-                                <option value=""></option>
-                                <option value="Anime">Anime</option>
-                                <option value="Horror">Horror</option>
-                                <option value="Mystery">Mystery</option>
-                                <option value="Open World">Open World</option>
-                                <option value="Sci-Fi">Sci-Fi</option>
-                                <option value="Space">Space</option>
-                                <option value="Survival">Survival</option>
-                            </select>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td colspan="2"><hr></td>
-                    </tr>
-                    <tr>
-                        <td><label>Find by Name</label></td>
-                        <td class="input-box"><input type="search" name="search_by_name" id="search_by_name" placeholder="game name"></td>
-                    </tr>
-                </table>
-                <div class="filter-btn-group">
-                    <input type="Submit" id="search_submit" class="filter-btn" name="search_submit" value="Submit">
-                    <input type="reset" id="search_reset" class="filter-btn" name="search_reset" value="Reset">
-                </div>
-            </form>
+            <div id="search_game">
+                <form method="get" id="search_form">{% csrf_token %}
+                    {{ search_by_other_form }}
+                    <hr>
+                    {{ search_by_name_form }}
+                    <div class="filter-btn-group">
+                        <button type="Submit" id="search_submit" class="filter-btn" name="search_submit">Submit</button>
+                        <button type="reset" id="search_reset" class="filter-btn" name="search_reset">Reset</button>
+                    </div>
+                </form>
+            </div>
 
             <div id="add_game">
                 <p id="not_found_game">Not found your game? Add here!</p>
                 <form method="post" id="add_game_form" enctype="multipart/form-data">
                     {% csrf_token %}
-                    <!-- <label>Name</label>
-                    <input type="text" name="add_game_name" id="add_game_name">
-                    
-                    <label>Platform</label>
-                    <select name="platform" id="add_game_platform">
-                        <option value="Steam">Steam</option>
-                        <option value="PlayStation">Playstation</option>
-                        <option value="Nintendo">Nintendo</option>
-                        <option value="Xbox">Xbox</option>
-                    </select>
-                    
-                    <label>Publisher</label>
-                    <input type="text" name="add_game_publisher" id="add_game_publisher">
-                    
-                    <label>Release Date</label>
-                    <input type="date" name="add_game_date" id="add_game_date">
-                    
-                    <label>Genre</label>
-                    <select name="genre" id="add_game_genre">
-                        <option value="Action">Action</option>
-                        <option value="Role-Playing">Role-Playing</option>
-                        <option value="Strategy">Strategy</option>
-                        <option value="Adventure">Adventure</option>
-                        <option value="Casual">Casual</option>
-                        <option value="Simulation">Simulation</option>
-                        <option value="Sports">Sports</option>
-                    </select>
-                    
-                    <label>Theme</label>
-                    <select name="theme" id="add_game_theme">
-                        <option value="Anime">Anime</option>
-                        <option value="Horror">Horror</option>
-                        <option value="Mystery">Mystery</option>
-                        <option value="Open World">Open World</option>
-                        <option value="Sci-Fi">Sci-Fi</option>
-                        <option value="Space">Space</option>
-                        <option value="Survival">Survival</option>
-                    </select> -->
-                    {{ form.as_p }}
+                    {{ add_form.as_p }}
                     <div class="filter-btn-group">
-                        <input class="filter-btn" type="submit" id="add_game_submit" value="Add">
-                        <input class="filter-btn" type="reset" id="add_game_reset" value="Reset">
+                        <button class="filter-btn" type="submit" id="add_game_submit">Add</button>
+                        <button class="filter-btn" type="reset" id="add_game_reset">Reset</button>
                     </div>
                 </form>
                 <div id="add_game_msg"></div>
@@ -189,4 +105,5 @@
 
 {% block js %}
 <script src="{% static 'logapp/js/slides.js' %}"></script>
+<script src="{% static 'logapp/js/games.js' %}"></script>
 {% endblock %}

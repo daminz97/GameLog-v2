@@ -56,44 +56,45 @@ $(document).mousedown(function(e) {
 
 $(document).ready(function(){
     // account information ajax update
-    $('#edit').on("click", function(event) {
+    $('#edit').click(function(event) {
         $('#form-wrapper').show();
         $('#edit').hide();
     });
     
-    $('#submit').on("click", function(event) {
+    $('#edit_profile_submit').click(function(event) {
         event.preventDefault();
         $('#form-wrapper').hide();
         $('#confirm-box').show();
         $('span').css('color', 'green');
     });
     
-    $('#close-confirm').on("click", function(event) {
+    $('#close-confirm').click(function(event) {
         $('#confirm-box').hide();
         $('#edit').show();
     })
     
-    $("#img-selector").on("click", function(event) {
+    $("#img-selector").click(function(event) {
         $("#img-box").show();
     
     });
     
-    $('#close-img').on("click", function(event) {
+    $('#close-img').click(function(event) {
         $('#img-box').hide();
     })
     
-    $('#submit').click(function(e){
+    // update profile
+    $('#edit_profile_submit').click(function(e){
         e.preventDefault();
         console.log("form submitted");
         $.ajax({
             type: "POST",
-            url: "update_profile",
+            url: "new_profile",
             headers: {'X-CSRFToken': csrftoken},
             data: {
                 region: $('#new_region').val(),
-                email: $('#new_email').val(),
-                fname: $('#new_fname').val(),
-                lname: $('#new_lname').val(),
+                email: $('#new_email').val().trim(),
+                fname: $('#new_fname').val().trim(),
+                lname: $('#new_lname').val().trim(),
                 dataType: 'json',
             },
             success: function(data) {
@@ -102,9 +103,6 @@ $(document).ready(function(){
                 $('#fname').html(data.fname);
                 $('#lname').text(data.lname);
             },
-            error: function(xhr, errmsg, err) {
-                
-            }
         });
     });
 
@@ -115,7 +113,7 @@ $(document).ready(function(){
         var formData = new FormData(document.getElementById('add_game_form'));
         $.ajax({
             type: "POST",
-            url: "add_game",
+            url: "new_game",
             headers: {'X-CSRFToken': csrftoken},
             data: formData,
             processData: false,
@@ -123,13 +121,11 @@ $(document).ready(function(){
             success: function(data) {
                 $('#add_game_msg').html(data.msg);
             },
-            error: function(xhr, errmsg, err) {
-
-            }
         });
+        $('#add_game_form')[0].reset();
     });
 
-    // ajax update game search results
+    // search games
     $('#search_submit').click(function(e){
         e.preventDefault();
         $.ajax({
@@ -137,10 +133,10 @@ $(document).ready(function(){
             url: "search_results",
             headers: {'X-CSRFToken': csrftoken},
             data: {
-                platform: $('#search_platform').val(),
-                genre: $('#search_genre').val(),
-                theme: $('#search_theme').val(),
-                name: $('#search_by_name').val(),
+                platform: $('#id_search_platform').val(),
+                genre: $('#id_search_genre').val(),
+                theme: $('#id_search_theme').val(),
+                name: $('#id_search_name').val().trim(),
             },
             success: function(data) {
                 console.log(data)
@@ -149,14 +145,11 @@ $(document).ready(function(){
                 $("#steam-game-list").html(data);
                 $("#steam-game-list").css("display", "block");
             },
-            error: function(xhr, errmsg, err) {
-                
-            }
         });
         $('#search_form')[0].reset();
     });
 
-    // ajax update games view more
+    // view more games
     $('#view-more-btn').click(function(e) {
         e.preventDefault();
         $.ajax({
@@ -175,5 +168,116 @@ $(document).ready(function(){
             }
         })
         
-    })
+    });
+
+    // ajax reset password
+    // check if user exist
+    $('#reset_username').keyup(function() {
+        $.ajax({
+            type: "GET",
+            url: "if_exists",
+            data: {
+                keyin_username: $('#reset_username').val().trim(),
+                dataType: 'json',
+            },
+            success: function(data) {
+                $('#user_exist_msg').text(data.msg);
+            }
+        })
+    });
+
+    // check if old password
+    $('#reset_password').keyup(function() {
+        $.ajax({
+            type: 'GET',
+            url: 'not_old_password',
+            data: {
+                keyin_username: $('#reset_username').val().trim(),
+                keyin_password: $('#reset_password').val().trim(),
+                dataType: 'json',
+            },
+            success: function(data) {
+                $('#not_old_password_msg').text(data.msg);
+            }
+        })
+    });
+
+    // check if passwords match
+    $('#verify_reset_password').keyup(function() {
+        $.ajax({
+            type: 'GET',
+            url: 'if_match',
+            data: {
+                password: $('#reset_password').val().trim(),
+                verify_pass: $('#verify_reset_password').val().trim(),
+                dataType: 'json',
+            },
+            success: function(data) {
+                $('#password_match_msg').text(data.msg);
+            }
+        })
+    });
+
+    // show reset password form
+    $('#reset_password_trigger').click(function(e) {
+        e.preventDefault();
+        $('#reset_password_form').toggle();
+        $('#reset_msg').hide();
+    });
+
+    // submit reset request
+    $('#reset_password_btn').click(function(e) {
+        e.preventDefault();
+        $.ajax({
+            type: 'POST',
+            url: 'change_password',
+            headers: {'X-CSRFToken': csrftoken},
+            data: {
+                username: $('#reset_username').val().trim(),
+                new_password: $('#verify_reset_password').val().trim(),
+                dataType: 'json',
+            },
+            success: function(data) {
+                $('#reset_password_form').hide();
+                $('#reset_msg').text(data.msg);
+                $('#reset_msg').show();
+            }
+        })
+    });
+
+    // submit new time budget
+    $('#time_budget_submit').click(function(e) {
+        e.preventDefault();
+        $.ajax({
+            type: 'POST',
+            url: 'update_time_budget',
+            headers: {'X-CSRFToken': csrftoken},
+            data: {
+                new_time_budget: $('#new_time_budget').val().trim(),
+                dataType: 'json',
+            },
+            success: function(data) {
+                $('#exceed_time').html(data);
+            }
+        });
+        $('#new_time_budget').val('');
+    });
+
+    // submit new budget
+    $('#budget_submit').click(function(e) {
+        e.preventDefault();
+        $.ajax({
+            type: 'POST',
+            url: 'update_budget',
+            headers: {'X-CSRFToken': csrftoken},
+            data: {
+                new_budget: $('#new_budget').val().trim(),
+                dataType: 'json',
+            },
+            success: function(data) {
+                $('#exceed_budget').html(data);
+            }
+        });
+        $('#new_budget').val('');
+    });
 });

@@ -14,9 +14,6 @@
     <div class="login-form">
         <h1 class="title">Welcome back!</h1>
         <div class="login-detail">
-            {% if form.errors %}
-            {{ msg }}
-            {% endif %}
             <form method="post" id="login-form">
                 {% csrf_token %}
                 <table>
@@ -30,9 +27,38 @@
                     </tr>
                 </table>
                 <div class="login-btn">
-                    <input type="submit" id="login-btn" value="Log in"></a>
+                    <button type="submit" id="login-btn">Log in</button>
                 </div>
             </form>
+            <div id="reset-password">
+                <a id="reset_password_trigger" href="#">Forget Password?</a>
+                <form method="post" id="reset_password_form">
+                    {% csrf_token %}
+                    <table>
+                        <tr>
+                            <td class="label-item"><label for="reset_username">Username</label></td>
+                            <td><input id="reset_username" type="text" name="reset_username"></td>
+                            <td><p id="user_exist_msg"></p></td>
+                        </tr>
+                        <tr>
+                            <td class="label-item"><label for="reset_password">New Password</label></td>
+                            <td><input id="reset_password" type="password" name="reset_password"></td>
+                            <td><p id="not_old_password_msg"></p></td>
+                        </tr>
+                        <tr>
+                            <td class="label-item"><label for="verify_reset_password">Repeat Password</label></td>
+                            <td><input id="verify_reset_password" type="password" name="verify_reset_password"></td>
+                            <td><p id="password_match_msg"></p></td>
+                        </tr>
+                    </table>
+                    <div class="reset-password-btn-group">
+                        <button type="submit" id="reset_password_btn">Submit</button>
+                        <button type="reset" id="reset_password_reset">Reset</button>
+                    </div>
+                </form>
+                <p id="reset_msg"></p>
+            </div>
+            
         </div>
     </div>
 {% endblock %}

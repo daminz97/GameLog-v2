@@ -29,18 +29,23 @@ table {
     font-size: 1.2rem;
 }
 
-#create_region, #create_gender, #create_email, #create_fname, #create_lname, #create_username, #create_password {
-    margin: 1% 5%;
+#create_region, 
+#create_gender, 
+#create_email, 
+#create_fname, 
+#create_lname, 
+#create_username, 
+#create_password {
+    display: block;
+    width: 70%;
+    margin: 3% auto;
+    text-align: center;
     border: 2px solid #000000;
     border-radius: 25px;
     height: 2rem;
     outline: none;
-    padding-left: 2%;
+    box-sizing: border-box;
 }
-
-/* input[type=radio] {
-    margin-right: 1%;
-} */
 
 input:focus::-webkit-input-placeholder {
     visibility: hidden;
@@ -51,22 +56,22 @@ input:focus::-webkit-input-placeholder {
 }
 
 .signup-btn {
-    width: 100%;
-    text-align: center;
+    padding: 2%;
     margin-top: 5%;
+    margin-bottom: 3%;
+    text-align: center;
 }
 
 #signup-btn, #signup-reset-btn {
-    display: inline-block;
+    width: 100px;
     text-decoration: none;
-    color: #000000;
     font-weight: bold;
+    color: #000000;
+    background-color: #ffffff;
     border: 2px solid #000000;
     border-radius: 25px;
-    background-color: #ffffff;
     padding: 1%;
-    transition: ease 0.3s;
-    font-size: 1.2rem;
+    transition: ease 0.2s;
 }
 
 #signup-btn:hover, #signup-reset-btn:hover {

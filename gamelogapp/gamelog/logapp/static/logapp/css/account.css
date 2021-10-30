@@ -26,35 +26,6 @@
     vertical-align: middle;
 }
 
-.info-row td label {
-    border-bottom: 1px solid #000;
-    width: fit-content;
-}
-
-.info-row td select {
-    margin: 1% 10%;
-    width: 60%;
-    border: 2px solid #000000;
-    border-radius: 25px;
-    height: 2rem;
-    outline: none;
-}
-
-.info-row td input[type=text],
-.info-row td input[type=password],
-.info-row td input[type=email] {
-    margin: 1% 10%;
-    width: 60%;
-    border: 2px solid #000000;
-    border-radius: 25px;
-    height: 2rem;
-    outline: none;
-}
-
-.info-row td input:focus {
-    background-color: thistle;
-}
-
 .account-icon {
     width: 40%;
     margin-left: auto;
@@ -67,20 +38,7 @@
     border-radius: 50%;
 }
 
-.account-btn-group {
-    text-align: center;
-    width: 100%;
-    margin: 5% 0;
-}
-
-.account-btn {
-    text-decoration: none;
-    border: 2px solid #000000;
-    border-radius: 25px;
-    padding: 1%;
-    margin: 0 2%;
-}
-
+/* edit form */
 #form-wrapper {
     display: none;
     position: fixed;
@@ -113,69 +71,19 @@
     margin: 0 auto;
 }
 
-.edit-row td select {
-    margin: 1% 10%;
+#new_region,
+#new_email,
+#new_fname,
+#new_lname {
+    display: block;
+    width: 100%;
+    margin: 3% auto;
+    text-align: center;
     border: 2px solid #000000;
     border-radius: 25px;
     height: 2rem;
     outline: none;
-}
-
-.edit-row td input[type=text],
-.edit-row td input[type=password],
-.edit-row td input[type=email] {
-    margin: 1% 10%;
-    border: 2px solid #000000;
-    border-radius: 25px;
-    height: 2rem;
-    outline: none;
-    padding-left: 2%;
-}
-
-.edit-row td input:focus {
-    background-color: thistle;
-}
-
-#edit {
-    font-size: 1.2rem;
-    background-color: #fff;
-    color: #000;
-    padding: 1%;
-    font-weight: bold;
-    transition: ease .3s;
-}
-
-#edit:hover {
-    background-color: #000;
-    color: #fff;
-}
-
-#submit {
-    font-size: 1.2rem;
-    background-color: green;
-    color: #ffffff;
-    padding: 1%;
-    transition: ease .3s;
-    font-weight: bold;
-}
-
-#submit:hover {
-    background-color: #ffffff;
-    color: #000000;
-}
-
-#reset {
-    font-size: 1.2rem;
-    background-color: yellow;
-    color: #000000;
-    padding: 1%;
-    transition: ease .3s;
-    font-weight: bold;
-}
-
-#reset:hover {
-    background-color: #ffffff;
-    color: #000000;
+    box-sizing: border-box;
 }
 
 #confirm-box {
@@ -208,24 +116,6 @@
     margin-bottom: 5%;
 }
 
-#img_submit,
-#close-confirm {
-    font-size: 1.2rem;
-    font-weight: bold;
-    border-radius: 25px;
-    border: 2px solid #000000;
-    padding: 1%;
-    background-color: #fff;
-    transition: ease 0.3s;
-    margin-top: 5%;
-}
-
-#img_submit:hover,
-#close-confirm:hover {
-    background-color: #000;
-    color: #fff;
-}
-
 #img-box {
     display: none;
     position: fixed;
@@ -247,9 +137,39 @@
     padding: 3%;
 }
 
-.fa-plus-circle {
+#img_submit {
+    margin-top: 3%;
+}
+
+.account-btn-group {
+    padding: 2%;
+    margin-top: 5%;
+    margin-bottom: 3%;
+    text-align: center;
+}
+
+#edit,
+#close-confirm,
+#edit_profile_submit,
+#edit_profile_reset,
+#img_submit {
+    width: 70px;
+    font-weight: bold;
     color: #000000;
-    font-size: 4rem;
+    background-color: #ffffff;
+    border: 2px solid #000000;
+    border-radius: 25px;
+    padding: 1%;
+    transition: ease 0.2s;
+}
+
+#edit:hover,
+#close-confirm:hover,
+#edit_profile_submit:hover,
+#edit_profile_reset:hover,
+#img_submit:hover {
+    color: #fff;
+    background-color: #000;
 }
 
 @media screen and (max-width: 768px) {

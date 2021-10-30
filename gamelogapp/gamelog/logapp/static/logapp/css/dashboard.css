@@ -5,15 +5,18 @@
 .account-group {
     text-align: center;
     margin: 3% auto;
+    width: 100%;
 }
-
+.account-item-box {
+    display: inline-block;
+    width: 10%;
+}
 .account-item {
     text-decoration: none;
     border: 2px solid #000;
     border-radius: 25px;
     color: #000;
-    padding: .5%;
-    margin: 0 .5%;
+    padding: 2%;
 }
 
 .account-item:hover {
@@ -37,27 +40,47 @@ legend {
     margin: auto;
 }
 
-.budget-input {
-    width: min-content;
+#time-comment,
+#cost-comment {
+    line-height: 2em;
+}
+
+.exceed_budget {
+    color: red;
+}
+
+.below_budget {
+    color: green;
+}
+#update_time_budget,
+#update_budget {
+    display: inline-block;
+}
+
+#new_time_budget,
+#new_budget {
+    width: 20%;
+    margin: 3% auto;
+    padding-left: 2%;
     border: 2px solid #000000;
     border-radius: 25px;
-    height: 1.5rem;
+    height: 1rem;
     outline: none;
-    padding-left: .5%;
 }
-
-.budget-btn {
-    font-size: .8rem;
+#time_budget_submit,
+#budget_submit {
+    width: 70px;
+    height: 2rem;
     font-weight: bold;
-    border-radius: 25px;
+    color: #000000;
+    background-color: #ffffff;
     border: 2px solid #000000;
-    padding: .5%;
-    margin-left: .5%;
-    background-color: #fff;
-    transition: ease 0.3s;
+    border-radius: 25px;
+    padding: 1%;
+    transition: ease 0.2s;
 }
-
-.budget-btn:hover {
+#time_budget_submit:hover,
+#budget_submit:hover {
     color: #fff;
     background-color: #000;
 }
@@ -77,6 +100,11 @@ legend {
         text-align: center;
         margin: 5% auto;
     }
+    .account-item-box {
+        display: inline-block;
+        width: 100%;
+        margin: 3% auto;
+    }
     .subtitle {
         margin: 5% auto;
     }
@@ -90,6 +118,7 @@ legend {
     legend {
         text-align: left;
     }
+    #time-comment,
     #cost-comment {
         line-height: 2em;
     }
