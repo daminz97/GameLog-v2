@@ -201,7 +201,7 @@ drawGraph();
 
 $(document).ready(function() {
     // get retail price
-    var previewUrl = "http://api.steampowered.com/ISteamApps/GetAppList/v0002/?key=C919805BD39CC41E796AFE30BACE9E33&format=json";
+    var previewUrl = "https://api.steampowered.com/ISteamApps/GetAppList/v0002/?key=C919805BD39CC41E796AFE30BACE9E33&format=json";
     $.ajax({
         type: 'GET',
         crossDomain: true,
