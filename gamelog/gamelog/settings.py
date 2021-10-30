@@ -54,7 +54,7 @@ MIDDLEWARE = [
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
 ]
 
-ROOT_URLCONF = 'gamelog.urls'
+ROOT_URLCONF = 'gamelog.gamelog.urls'
 
 TEMPLATES = [
     {
