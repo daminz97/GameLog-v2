@@ -32,13 +32,13 @@ class Game(models.Model):
         ('Space', 'Space'),
         ('Survival', 'Survival'),
     ]
-    name = models.CharField(max_length=50)
-    platform = models.CharField(max_length=50, choices=PLATFORMS)
-    publisher = models.CharField(max_length=50)
+    name = models.CharField(max_length=1000)
+    platform = models.CharField(max_length=1000, choices=PLATFORMS)
+    publisher = models.CharField(max_length=1000)
     date = models.DateField()
-    genre = models.CharField(max_length=50, choices=GENRES)
-    theme = models.CharField(max_length=50, choices=THEMES)
-    image = models.CharField(max_length=10000)
+    genre = models.CharField(max_length=1000, choices=GENRES)
+    theme = models.CharField(max_length=1000, choices=THEMES)
+    image = models.CharField(max_length=1000000)
 
     REQUIRED_FIELDS = ['name','platform','model','publisher','date', 'genre', 'theme']
 
@@ -54,8 +54,8 @@ class Profile(models.Model):
         ('Africa', 'Africa'),
     ]
     user = OneToOneField(User, on_delete=models.CASCADE)
-    region = models.CharField(max_length=50, choices=REGION_CHOICES)
-    gender = models.CharField(max_length=50)
+    region = models.CharField(max_length=1000, choices=REGION_CHOICES)
+    gender = models.CharField(max_length=1000)
     avatar = models.ImageField(upload_to='user_images/', default='user_images/image0.jpg', blank=True)
 
     REQUIRED_FIELDS = ['region', 'gender']
