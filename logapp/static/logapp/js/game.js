@@ -210,6 +210,8 @@ $(document).ready(function() {
             const app_list = data['applist']['apps'];
             var game_name = JSON.parse(document.getElementById('game_detail').textContent);
             var game_image = JSON.parse(document.getElementById('game_image').textContent);
+            var game_plat = JSON.parse(document.getElementById('game_plat').textContent);
+            console.log(game_name, game_image, game_plat);
             var price = 0;
             var steam_id= 0;
             var image;
@@ -232,11 +234,12 @@ $(document).ready(function() {
                     $('<td>', {class: 'price'}).append(price),
                 )
             );
-            if (image !== null) {
-                $('#game-img').attr('src', image);
-            } else {
+            if (game_plat !== 'Steam') {
                 $('#game-img').attr('src', game_image);
+            } else if (image !== null) {
+                $('#game-img').attr('src', image);
             }
+            
         },
         error: function(e) {
             console.log(e.message);

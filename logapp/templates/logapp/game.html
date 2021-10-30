@@ -35,24 +35,11 @@
                 </div>
                 <img class="game-img" id="game-img" src="#" alt="game screenshot">
                 <div class="get-game">
+                    {{ game_platform|json_script:"game_plat" }}
                     {{ game_name|json_script:"game_detail" }}
                     {{ game_image|json_script:"game_image" }}
                     <h2 class="subtitle">Get one from</h2>
                     <table id="game_retail_list">
-                        <!-- <tr>
-                            <td class="store-name"><a href="https://www.gamestop.com/video-games/xbox-one/products/destiny-2-forsaken-complete-collection/176839.html?gclid=Cj0KCQjwtMCKBhDAARIsAG-2Eu-4RfvOC8b4es0pvgi4q45yZxU5MAdV7kJs5svU75BBcfkUMPnU-ksaAprUEALw_wcB&gclsrc=aw.ds"
-                                    target="_blank">Gamestop</a></td>
-                            <td class="price">$100</td>
-                        </tr>
-                        <tr>
-                            <td class="store-name"><a href="https://store.steampowered.com/app/1085660/Destiny_2/" target="_blank">Steam</a></td>
-                            <td class="price">$0</td>
-                        </tr>
-                        <tr>
-                            <td class="store-name"><a href="https://www.walmart.com/ip/Destiny-2-Activision-PC-047875880900/55652061?wmlspartner=wlpa&selectedSellerId=101098132&&adid=22222222227000000000&wl0=&wl1=g&wl2=c&wl3=42423897272&wl4=aud-1025716567856:pla-51320962143&wl5=9016721&wl6=&wl7=&wl8=&wl9=pla&wl10=498873040&wl11=online&wl12=55652061&veh=sem&gclid=Cj0KCQjwtMCKBhDAARIsAG-2Eu84YV8-t1rJ23h2jRDce2ZA0o_g_e59B0iB06lJr136JrpIWxTjy5YaAitJEALw_wcB&gclsrc=aw.ds"
-                                    target="_blank">Walmart</a></td>
-                            <td class="price">$9.92</td>
-                        </tr> -->
                     </table>
                 </div>
             </div>
@@ -88,6 +75,7 @@
 {% endblock %}
 
 {% block js %}
+<script type="module" id="game_plat" type="application/json">{ "game_plat": game_plat}</script>
 <script type="module" id="game_detail" type="application/json">{ "game_detail": game_detail }</script>
 <script type="module" id="game_image" type="application/json">{ "game_image": game_image }</script>
 <script type="module" src="{% static 'logapp/js/game.js' %}"></script>

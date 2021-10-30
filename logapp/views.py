@@ -71,6 +71,7 @@ def game(request, game_plat, game_id):
     game = Game.objects.get(pk=game_id)
     context = {
         'game': game,
+        'game_platform': game.platform,
         'game_name': game.name,
         'game_image': game.image,
     }
