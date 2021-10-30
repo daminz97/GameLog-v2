@@ -207,39 +207,38 @@ $(document).ready(function() {
         crossDomain: true,
         url: previewUrl,
         success: async function(data) {
-            const app_list = data['applist']['apps'];
-            var game_name = JSON.parse(document.getElementById('game_detail').textContent);
-            var game_image = JSON.parse(document.getElementById('game_image').textContent);
             var game_plat = JSON.parse(document.getElementById('game_plat').textContent);
-            console.log(game_name, game_image, game_plat);
-            var price = 0;
-            var steam_id= 0;
-            var image;
-            for (let i in app_list) {
-                if (app_list[i]['name'] === game_name) {
-                    steam_id = app_list[i]['appid'];
-                    break;
-                }
-            };
-            await $.getJSON('https://store.steampowered.com/api/appdetails?appids='+steam_id+'&cc=us&l=en', function(info) {
-                price = info[steam_id]['data']['price_overview']['final_formatted'];
-                image = info[steam_id]['data']['header_image'];
-            });
-            let game_url = 'https://store.steampowered.com/app/'+steam_id;
-            $('#game_retail_list').append(
-                $('<tr>').append(
-                    $('<td>', {class: 'store-name'}).append(
-                        $('<a>', {href: game_url, target: '_blank'}).append('Steam')
-                    ),
-                    $('<td>', {class: 'price'}).append(price),
-                )
-            );
-            if (game_plat !== 'Steam') {
-                $('#game-img').attr('src', game_image);
-            } else if (image !== null) {
+            var game_image = JSON.parse(document.getElementById('game_image').textContent);
+            if (game_plat === 'Steam') {
+                const app_list = data['applist']['apps'];
+                var game_name = JSON.parse(document.getElementById('game_detail').textContent);
+                var price = 0;
+                var steam_id= 0;
+                var image;
+                for (let i in app_list) {
+                    if (app_list[i]['name'] === game_name) {
+                        steam_id = app_list[i]['appid'];
+                        break;
+                    }
+                };
+                await $.getJSON('https://store.steampowered.com/api/appdetails?appids='+steam_id+'&cc=us&l=en', function(info) {
+                    price = info[steam_id]['data']['price_overview']['final_formatted'];
+                    image = info[steam_id]['data']['header_image'];
+                });
+                let game_url = 'https://store.steampowered.com/app/'+steam_id;
+                $('#game_retail_list').append(
+                    $('<tr>').append(
+                        $('<td>', {class: 'store-name'}).append(
+                            $('<a>', {href: game_url, target: '_blank'}).append('Steam')
+                        ),
+                        $('<td>', {class: 'price'}).append(price),
+                    )
+                );
                 $('#game-img').attr('src', image);
+            } else {
+                console.log('success')
+                $('#game-img').attr('src', game_image);
             }
-            
         },
         error: function(e) {
             console.log(e.message);
