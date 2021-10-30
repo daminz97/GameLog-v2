@@ -192,7 +192,7 @@ def update_budget(request):
 
 def logout_view(request):
     logout(request)
-    return redirect('')
+    return redirect('index')
 
 def login_view(request):
     username = request.POST.get('login_username', '')
@@ -200,7 +200,7 @@ def login_view(request):
     user = authenticate(request, username=username, password=password)
     if user:
         login(request, user)
-        return redirect('')
+        return redirect('index')
     else:
         response = {
             'msg': "Invalid Username or Password."
@@ -209,7 +209,7 @@ def login_view(request):
 
 def signup(request):
     if request.user.is_authenticated:
-        return redirect('')
+        return redirect('index')
     if request.method == "POST":
         region = request.POST['create_region']
         gender = request.POST['create_gender']
