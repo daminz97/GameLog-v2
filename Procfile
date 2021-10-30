@@ -1,1 +1,1 @@
-web: gunicorn gamelog.gamelog.wsgi --log-file -
+web: gunicorn gamelog.wsgi --log-file -
