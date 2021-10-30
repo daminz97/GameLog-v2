@@ -72,7 +72,7 @@ def game(request, game_plat, game_id):
     context = {
         'game': game,
         'game_name': game.name,
-        'game_image': game.image.url,
+        'game_image': game.image,
     }
     return render(request, 'logapp/game.html', context)
 
