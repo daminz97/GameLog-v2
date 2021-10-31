@@ -17,7 +17,7 @@
             <div class="game-info">
                 <div class="row">
                     <h1 class="game-title">{{ game.name }}</h1>
-                    <img class="game-plat" src="{{ platform_icon }}" alt="game platform">
+                    <img class="game-plat" src="{% static 'logapp/img/{{ platform_icon }}' %}" alt="game platform">
                 </div>
                 <div class="row">
                     <p class="game-detail">Publisher: {{ game.publisher }}</p>
