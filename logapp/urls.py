@@ -27,6 +27,6 @@ urlpatterns = [
     path('games/', views.games, name='games'),
     path('games/new_game/', views.new_game, name='new_game'),
     path('games/<str:game_plat>/<int:game_id>/', views.game, name='game_detail'),
-    path('steam_price/', views.external_steam, name='steam_price'),
+    path('games/<str:game_plat>/<int:game_id>/steam_price/', views.external_steam, name='steam_price'),
     path('search_results/', views.search, name='search_results'),
 ]
