@@ -10,7 +10,7 @@ urlpatterns = [
     # path('view/', views.login_view, name='login_view'),
     path('account/', views.account, name='account'),
     path('account/new_profile/', views.new_profile, name='new_profile'),
-    
+
     path('dashboard/', views.dashboard, name='dashboard'),
     path('dashboard/new_budget/', views.update_budget, name='new_budget'),
     path('dashboard/new_time_budget/', views.update_time_budget, name='new_time_budget'),
@@ -27,6 +27,6 @@ urlpatterns = [
     path('games/', views.games, name='games'),
     path('games/new_game/', views.new_game, name='new_game'),
     path('games/<str:game_plat>/<int:game_id>/', views.game, name='game_detail'),
-    path('game/steam_price/', views.external_steam, name='steam_price'),
+    path('steam_price/', views.external_steam, name='steam_price'),
     path('search_results/', views.search, name='search_results'),
 ]
