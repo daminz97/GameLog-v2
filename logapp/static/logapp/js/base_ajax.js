@@ -88,7 +88,7 @@ $(document).ready(function(){
         console.log("form submitted");
         $.ajax({
             type: "POST",
-            url: "new_profile",
+            url: "new_profile/",
             headers: {'X-CSRFToken': csrftoken},
             data: {
                 region: $('#new_region').val(),
@@ -113,7 +113,7 @@ $(document).ready(function(){
         var formData = new FormData(document.getElementById('add_game_form'));
         $.ajax({
             type: "POST",
-            url: "new_game",
+            url: "new_game/",
             headers: {'X-CSRFToken': csrftoken},
             data: formData,
             processData: false,
@@ -230,7 +230,7 @@ $(document).ready(function(){
         e.preventDefault();
         $.ajax({
             type: 'POST',
-            url: 'new_password',
+            url: 'new_password/',
             headers: {'X-CSRFToken': csrftoken},
             data: {
                 username: $('#reset_username').val().trim(),
@@ -250,7 +250,7 @@ $(document).ready(function(){
         e.preventDefault();
         $.ajax({
             type: 'POST',
-            url: 'new_time_budget',
+            url: 'new_time_budget/',
             headers: {'X-CSRFToken': csrftoken},
             data: {
                 new_time_budget: $('#new_time_budget').val().trim(),
@@ -268,7 +268,7 @@ $(document).ready(function(){
         e.preventDefault();
         $.ajax({
             type: 'POST',
-            url: 'new_budget',
+            url: 'new_budget/',
             headers: {'X-CSRFToken': csrftoken},
             data: {
                 new_budget: $('#new_budget').val().trim(),
