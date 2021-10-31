@@ -88,7 +88,7 @@ $(document).ready(function(){
         console.log("form submitted");
         $.ajax({
             type: "POST",
-            url: "{% url 'new_profile' %}",
+            url: "new_profile",
             headers: {'X-CSRFToken': csrftoken},
             data: {
                 region: $('#new_region').val(),
@@ -113,7 +113,7 @@ $(document).ready(function(){
         var formData = new FormData(document.getElementById('add_game_form'));
         $.ajax({
             type: "POST",
-            url: "{% url new_game %}",
+            url: "new_game",
             headers: {'X-CSRFToken': csrftoken},
             data: formData,
             processData: false,
@@ -130,7 +130,7 @@ $(document).ready(function(){
         e.preventDefault();
         $.ajax({
             type: "GET",
-            url: "{% url search_results %}",
+            url: "search_results",
             headers: {'X-CSRFToken': csrftoken},
             data: {
                 platform: $('#id_search_platform').val(),
@@ -154,7 +154,7 @@ $(document).ready(function(){
         e.preventDefault();
         $.ajax({
             type: "GET",
-            url: $('#reset_username').attr('data-url'),
+            url: 'search_results',
             headers: {'X-CSRFToken': csrftoken},
             data: {
                 name: 'all',
@@ -175,7 +175,7 @@ $(document).ready(function(){
     $('#reset_username').keyup(function() {
         $.ajax({
             type: "GET",
-            url: '{% url if_exists %}',
+            url: 'if_exists',
             data: {
                 keyin_username: $('#reset_username').val().trim(),
                 dataType: 'json',
@@ -190,7 +190,7 @@ $(document).ready(function(){
     $('#reset_password').keyup(function() {
         $.ajax({
             type: 'GET',
-            url: '{% url not_old_password %}',
+            url: 'not_old_password',
             data: {
                 keyin_username: $('#reset_username').val().trim(),
                 keyin_password: $('#reset_password').val().trim(),
@@ -206,7 +206,7 @@ $(document).ready(function(){
     $('#verify_reset_password').keyup(function() {
         $.ajax({
             type: 'GET',
-            url: '{% url if_match %}',
+            url: 'if_match',
             data: {
                 password: $('#reset_password').val().trim(),
                 verify_pass: $('#verify_reset_password').val().trim(),
@@ -230,7 +230,7 @@ $(document).ready(function(){
         e.preventDefault();
         $.ajax({
             type: 'POST',
-            url: '{% url new_password %}',
+            url: 'new_password',
             headers: {'X-CSRFToken': csrftoken},
             data: {
                 username: $('#reset_username').val().trim(),
@@ -250,7 +250,7 @@ $(document).ready(function(){
         e.preventDefault();
         $.ajax({
             type: 'POST',
-            url: '{% url new_time_budget %}',
+            url: 'new_time_budget',
             headers: {'X-CSRFToken': csrftoken},
             data: {
                 new_time_budget: $('#new_time_budget').val().trim(),
@@ -268,7 +268,7 @@ $(document).ready(function(){
         e.preventDefault();
         $.ajax({
             type: 'POST',
-            url: '{% url new_budget %}',
+            url: 'new_budget',
             headers: {'X-CSRFToken': csrftoken},
             data: {
                 new_budget: $('#new_budget').val().trim(),
