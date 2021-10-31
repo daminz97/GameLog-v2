@@ -95,8 +95,8 @@ def external_steam(request, game_plat, game_id):
         r = requests.get('https://api.steampowered.com/ISteamApps/GetAppList/v0002/?key=2E393A2FEFED36E35872374C96C2D418&format=json')
         if r.status_code == 200:
             data = r.json()
-            return JsonResponse(data)
             app_list = data['applist']['apps']
+            return JsonResponse(app_list)
             price = 0
             steam_id= 0
             image_url = ''
