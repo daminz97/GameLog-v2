@@ -95,7 +95,20 @@ def external_steam(request, game_plat, game_id):
         r = requests.get('https://api.steampowered.com/ISteamApps/GetAppList/v0002/?key=2E393A2FEFED36E35872374C96C2D418&format=json')
         if r.status_code == 200:
             data = r.json()
-            return JsonResponse(data)
+            app_list = data['applist']['apps']
+            price = 0
+            steam_id= 0
+            image_url = ''
+            for i in range(len(app_list)):
+                if app_list[i]['name'] == request.GET('game_name'):
+                    steam_id = app_list[i]['appid']
+                    break
+            game_info = requests.get('https://store.steampowered.com/api/appdetails?appids='+steam_id+'&cc=us&l=en')
+            if game_info.status_code == 200:
+                price = game_info.json()[steam_id]['data']['price_overview']['final_formatted']
+                image_url = game_info.json()[steam_id]['data']['header_image']
+            game_url = 'https://store.steampowered.com/app/'+steam_id
+            return JsonResponse({'game_url': game_url, 'price': price, 'image': image_url})
 
 
 def new_game(request):

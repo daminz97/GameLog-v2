@@ -202,41 +202,27 @@ drawGraph();
 $(document).ready(function() {
     // get retail price
     var game_id = JSON.parse(document.getElementById('game_id').textContent);
+    var game_name = JSON.parse(document.getElementById('game_detail').textContent);
     var game_plat = JSON.parse(document.getElementById('game_plat').textContent);
-    // var url = game_plat+'/'+game_id+'/steam_price';
+    var game_image = JSON.parse(document.getElementById('game_image').textContent);
     $.ajax({
         type: 'GET',
         url: 'steam_price',
+        data: {
+            'game_name': game_name,
+        },
         success: async function(data) {
-            var game_image = JSON.parse(document.getElementById('game_image').textContent);
             if (game_plat === 'Steam') {
-                const app_list = data['applist']['apps'];
-                var game_name = JSON.parse(document.getElementById('game_detail').textContent);
-                var price = 0;
-                var steam_id= 0;
-                var image;
-                for (let i in app_list) {
-                    if (app_list[i]['name'] === game_name) {
-                        steam_id = app_list[i]['appid'];
-                        break;
-                    }
-                };
-                await $.getJSON('https://store.steampowered.com/api/appdetails?appids='+steam_id+'&cc=us&l=en', function(info) {
-                    price = info[steam_id]['data']['price_overview']['final_formatted'];
-                    image = info[steam_id]['data']['header_image'];
-                });
-                let game_url = 'https://store.steampowered.com/app/'+steam_id;
                 $('#game_retail_list').append(
                     $('<tr>').append(
                         $('<td>', {class: 'store-name'}).append(
-                            $('<a>', {href: game_url, target: '_blank'}).append('Steam')
+                            $('<a>', {href: data.game_url, target: '_blank'}).append('Steam')
                         ),
-                        $('<td>', {class: 'price'}).append(price),
+                        $('<td>', {class: 'price'}).append(data.price),
                     )
                 );
-                $('#game-img').attr('src', image);
+                $('#game-img').attr('src', data.image);
             } else {
-                console.log('success')
                 $('#game-img').attr('src', game_image);
             }
         },
