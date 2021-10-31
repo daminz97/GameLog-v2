@@ -202,7 +202,7 @@ drawGraph();
 $(document).ready(function() {
     // get retail price
     var game_plat = JSON.parse(document.getElementById('game_plat').textContent);
-    $.ajax({
+    $.get({
         type: 'GET',
         url: 'steam_price',
         data: {
