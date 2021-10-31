@@ -11,7 +11,7 @@ from .models import *
 from .forms import *
 import json
 from django.db.models import Q
-from django.core import serializers
+from django.conf.urls.static import static
 # Create your views here.
 
 def search(request):
@@ -70,13 +70,13 @@ def games(request):
 def game(request, game_plat, game_id):
     game = Game.objects.get(pk=game_id)
     platform = game.platform
-    platform_icon = "static/img/steam.svg"
+    platform_icon = static('steam.svg')
     if platform == "PlayStation":
-        platform_icon = "static/img/playstation.svg"
+        platform_icon = static('playstation.svg')
     elif platform == "Xbox":
-        platform_icon = "static/img//xbox.svg"
+        platform_icon = static('xbox.svg')
     else:
-        platform_icon = "static/img/nintendo.svg"
+        platform_icon = static('nintendo.svg')
     context = {
         'game': game,
         'game_platform': platform,
