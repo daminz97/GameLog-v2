@@ -53,7 +53,7 @@ def index(request):
     }
     return render(request, 'logapp/index.html', context)
 
-@login_required(login_url='/logapp/login')
+@login_required(login_url='login')
 def games(request):
     slides = Game.objects.all()[:4]
     games = Game.objects.all()
@@ -66,7 +66,7 @@ def games(request):
     }
     return render(request, 'logapp/games.html', context)
 
-@login_required(login_url='/logapp/login')
+@login_required(login_url='login')
 def game(request, game_plat, game_id):
     game = Game.objects.get(pk=game_id)
     platform = game.platform
@@ -99,7 +99,7 @@ def new_game(request):
                 }
                 return JsonResponse(response)
 
-@login_required(login_url='/logapp/login')
+@login_required(login_url='login')
 def account(request):
     if request.user.is_authenticated:
         context = {
@@ -143,7 +143,7 @@ def new_profile(request):
                 request.user.profile.save()
                 return redirect('account')
 
-@login_required(login_url='/logapp/login')
+@login_required(login_url='login')
 def dashboard(request):
     logs = Log.objects.filter(user=request.user)
     budget = Budget.objects.get(user=request.user)
