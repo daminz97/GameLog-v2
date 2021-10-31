@@ -130,8 +130,8 @@ ALLOWED_HOSTS = ['radiant-coast-66907.herokuapp.com']
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/3.2/howto/static-files/
 
-# STATIC_ROOT = os.path.join(BASE_DIR, 'logapp/static')
-STATIC_ROOT = BASE_DIR / 'staticfiles'
+STATIC_ROOT = os.path.join(BASE_DIR, 'logapp/static')
+# STATIC_ROOT = BASE_DIR / 'staticfiles'
 STATIC_URL = '/static/'
 
 # Default primary key field type
