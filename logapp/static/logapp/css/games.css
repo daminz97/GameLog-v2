@@ -69,7 +69,8 @@
     #id_publisher,
     #id_date,
     #id_genre, 
-    #id_theme {
+    #id_theme,
+    #id_image {
         display: block;
         width: 100%;
         margin: 3% auto;
