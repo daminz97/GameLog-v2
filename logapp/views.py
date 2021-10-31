@@ -81,6 +81,7 @@ def game(request, game_plat, game_id):
         pass
     context = {
         'game': game,
+        'game_id': game_id,
         'game_platform': game_plat,
         'game_name': game.name,
         'game_image': game.image,

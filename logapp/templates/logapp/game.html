@@ -35,6 +35,7 @@
                 </div>
                 <img class="game-img" id="game-img" src="#" alt="game screenshot">
                 <div class="get-game">
+                    {{ game_id|json_script:"game_id" }}
                     {{ game_platform|json_script:"game_plat" }}
                     {{ game_name|json_script:"game_detail" }}
                     {{ game_image|json_script:"game_image" }}
@@ -75,6 +76,7 @@
 {% endblock %}
 
 {% block js %}
+<script type="module" id="game_id" type="application/json">{ "game_id": game_id}</script>
 <script type="module" id="game_plat" type="application/json">{ "game_plat": game_plat}</script>
 <script type="module" id="game_detail" type="application/json">{ "game_detail": game_detail }</script>
 <script type="module" id="game_image" type="application/json">{ "game_image": game_image }</script>

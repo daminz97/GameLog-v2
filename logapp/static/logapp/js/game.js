@@ -201,11 +201,12 @@ drawGraph();
 
 $(document).ready(function() {
     // get retail price
-    $.get({
+    var game_id = JSON.parse(document.getElementById('game_id').textContent);
+    var game_plat = JSON.parse(document.getElementById('game_plat').textContent);
+    $.ajax({
         type: 'GET',
-        url: 'steam_price',
+        url: game_plat + game_id + 'steam_price',
         success: async function(data) {
-            var game_plat = JSON.parse(document.getElementById('game_plat').textContent);
             var game_image = JSON.parse(document.getElementById('game_image').textContent);
             if (game_plat === 'Steam') {
                 const app_list = data['applist']['apps'];
