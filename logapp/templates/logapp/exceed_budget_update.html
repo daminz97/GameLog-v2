@@ -1,0 +1,7 @@
+{% load static %}
+
+{% if exceed_budget %}
+<p class="exceed_budget">Your current budget is ${{ budget }}, your expenses exceed!</p>
+{% else %}
+<p class="below_budget">Your current budget is ${{ budget }}, your expenses doesn't exceed!</p>
+{% endif %}

@@ -201,8 +201,6 @@ def dashboard(request):
             {'platform': 'Nintendo', 'num': nin_cost, 'perct': round(100*nin_cost/total_expenses, 2)},
         ],
         'total_cost': budget.expense,
-        'for_time': True,
-        'for_time': False,
         'time_budget': budget.time_budget,
         'budget': budget.budget,
         'exceed_time': exceed_time,

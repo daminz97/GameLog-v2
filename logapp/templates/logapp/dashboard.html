@@ -39,7 +39,7 @@
                     <p>You have played {{ value }}hrs in {{ key }}.</p>
                     {% endfor %}
                     <div id="exceed_time">
-                        {% include "logapp/exceed_update.html" %} 
+                        {% include "logapp/exceed_time_update.html" %} 
                     </div>
                     <p id="update_time_budget">
                         Change my time limit to 
@@ -51,7 +51,7 @@
                     <p>You have spent ${{ cost.num }} on {{ cost.platform }} games, {{ cost.perct }}% of total expense.</p>
                     {% endfor %}
                     <div id="exceed_budget">
-                        {% include "logapp/exceed_update.html" %}
+                        {% include "logapp/exceed_budget_update.html" %}
                     </div>
                     <p id="update_budget">
                         Change my budget to $
