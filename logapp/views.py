@@ -68,25 +68,28 @@ def games(request):
 
 @login_required(login_url='login')
 def game(request, game_plat, game_id):
-    game = Game.objects.get(pk=game_id)
-    platform = game.platform
-    platform_icon = 'steam.svg'
-    if platform == "PlayStation":
-        platform_icon = 'playstation.svg'
-    elif platform == "Xbox":
-        platform_icon = 'xbox.svg'
-    elif platform == "Nintendo":
-        platform_icon = 'nintendo.svg'
-    else:
-        pass
-    context = {
-        'game': game,
-        'game_platform': platform,
-        'game_name': game.name,
-        'game_image': game.image,
-        'platform_icon': platform_icon,
-    }
-    return render(request, 'logapp/game.html', context)
+    r = request.get('https://api.steampowered.com/ISteamApps/GetAppList/v0002/?key=2E393A2FEFED36E35872374C96C2D418&format=json', params=request.GET)
+    if r.status_code == 200:
+        game = Game.objects.get(pk=game_id)
+        platform = game.platform
+        platform_icon = 'steam.svg'
+        if platform == "PlayStation":
+            platform_icon = 'playstation.svg'
+        elif platform == "Xbox":
+            platform_icon = 'xbox.svg'
+        elif platform == "Nintendo":
+            platform_icon = 'nintendo.svg'
+        else:
+            pass
+        context = {
+            'game': game,
+            'game_platform': platform,
+            'game_name': game.name,
+            'game_image': game.image,
+            'platform_icon': platform_icon,
+            'external': r,
+        }
+        return render(request, 'logapp/game.html', context)
 
 def new_game(request):
     if request.method == "POST":
