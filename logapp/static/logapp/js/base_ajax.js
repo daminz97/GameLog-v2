@@ -154,7 +154,7 @@ $(document).ready(function(){
         e.preventDefault();
         $.ajax({
             type: "GET",
-            url: "{% url search_results %}",
+            url: decodeURI('{% url search_results %}'),
             headers: {'X-CSRFToken': csrftoken},
             data: {
                 name: 'all',
