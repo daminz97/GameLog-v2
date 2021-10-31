@@ -111,6 +111,8 @@ def external_steam(request, game_plat, game_id):
                     image_url = game_data[str(steam_id)]['data']['header_image']
                 game_url = 'https://store.steampowered.com/app/'+str(steam_id)
                 return JsonResponse({'game_url': game_url, 'price': price, 'image': image_url}, safe=False)
+        else:
+            return JsonResponse({'msg':'non steam game'})
 
 
 def new_game(request):
