@@ -69,11 +69,20 @@ def games(request):
 @login_required(login_url='/logapp/login')
 def game(request, game_plat, game_id):
     game = Game.objects.get(pk=game_id)
+    platform = game.platform
+    platform_icon = "{% static 'logapp/img/steam.svg' %}"
+    if platform == "PlayStation":
+        platform_icon = "{% static 'logapp/img/playstation.svg' %}"
+    elif platform == "Xbox":
+        platform_icon = "{% static 'logapp/img/xbox.svg' %}"
+    else:
+        platform_icon = "{% static 'logapp/img/nintendo.svg' %}"
     context = {
         'game': game,
-        'game_platform': game.platform,
+        'game_platform': platform,
         'game_name': game.name,
         'game_image': game.image,
+        'platform_icon': platform_icon,
     }
     return render(request, 'logapp/game.html', context)
 
