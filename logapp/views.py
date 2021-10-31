@@ -202,7 +202,7 @@ def dashboard(request):
         ],
         'total_cost': budget.expense,
         'for_time': True,
-        'for_budget': True,
+        'for_time': False,
         'time_budget': budget.time_budget,
         'budget': budget.budget,
         'exceed_time': exceed_time,
