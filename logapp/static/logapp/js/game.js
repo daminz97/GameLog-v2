@@ -206,8 +206,9 @@ $(document).ready(function() {
         crossDomain: true,
         url: "https://api.steampowered.com/ISteamApps/GetAppList/v0002/?key=2E393A2FEFED36E35872374C96C2D418&format=json",
         headers: {
-            'accept': 'application/json',
             'Access-Control-Allow-Origin': "*",
+            'Access-Control-Allow-Methods': 'GET, PUT, POST, DELETE, HEAD, OPTIONS',
+
         },
         dataType: 'jsonp',
         async: true,
