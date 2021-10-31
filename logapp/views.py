@@ -12,6 +12,7 @@ from .forms import *
 import json
 from django.db.models import Q
 from django.conf.urls.static import static
+import requests
 # Create your views here.
 
 def search(request):
@@ -70,7 +71,7 @@ def games(request):
 def game(request, game_plat, game_id):
     external = None
     if request.method == 'GET':
-        r = request.get('https://api.steampowered.com/ISteamApps/GetAppList/v0002/?key=2E393A2FEFED36E35872374C96C2D418&format=json', params=request.GET)
+        r = requests.get('https://api.steampowered.com/ISteamApps/GetAppList/v0002/?key=2E393A2FEFED36E35872374C96C2D418&format=json', params=request.GET)
         if r.status_code == 200:
             external = r.json()
     game = Game.objects.get(pk=game_id)
