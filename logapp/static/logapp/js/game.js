@@ -212,6 +212,7 @@ $(document).ready(function() {
             'game_name': game_name,
         },
         success: async function(data) {
+            console.log(data);
             if (game_plat === 'Steam') {
                 $('#game_retail_list').append(
                     $('<tr>').append(
