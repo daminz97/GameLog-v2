@@ -204,8 +204,8 @@ $(document).ready(function() {
     $.ajax({
         type: 'GET',
         url: 'game_detail',
-        // crossDomain: true,
-        // url: "https://api.steampowered.com/ISteamApps/GetAppList/v0002/?key=2E393A2FEFED36E35872374C96C2D418&format=json",
+        crossDomain: true,
+        url: "https://api.steampowered.com/ISteamApps/GetAppList/v0002/",
         // headers: {
         //     'Accept': 'application/json',
         //     'Access-Control-Allow-Origin': "*",

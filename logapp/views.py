@@ -69,11 +69,11 @@ def games(request):
 
 @login_required(login_url='login')
 def game(request, game_plat, game_id):
-    external = None
-    if request.method == 'GET':
-        r = requests.get('https://api.steampowered.com/ISteamApps/GetAppList/v0002/?key=2E393A2FEFED36E35872374C96C2D418&format=json', params=request.GET)
-        if r.status_code == 200:
-            external = r.json()
+    # external = None
+    # if request.method == 'GET':
+    #     r = requests.get('https://api.steampowered.com/ISteamApps/GetAppList/v0002/', params=request.GET)
+    #     if r.status_code == 200:
+    #         external = r.json()
     game = Game.objects.get(pk=game_id)
     platform = game.platform
     platform_icon = 'steam.svg'
@@ -91,7 +91,7 @@ def game(request, game_plat, game_id):
         'game_name': game.name,
         'game_image': game.image,
         'platform_icon': platform_icon,
-        'external': external,
+        # 'external': external,
     }
     return render(request, 'logapp/game.html', context)
 
