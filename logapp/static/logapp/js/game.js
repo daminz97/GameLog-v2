@@ -205,7 +205,7 @@ $(document).ready(function() {
     var game_plat = JSON.parse(document.getElementById('game_plat').textContent);
     $.ajax({
         type: 'GET',
-        url: game_plat + game_id + 'steam_price',
+        url: 'steam_price',
         success: async function(data) {
             var game_image = JSON.parse(document.getElementById('game_image').textContent);
             if (game_plat === 'Steam') {
