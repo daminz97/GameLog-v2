@@ -205,13 +205,10 @@ $(document).ready(function() {
         type: 'GET',
         crossDomain: true,
         url: "https://api.steampowered.com/ISteamApps/GetAppList/v0002/?key=2E393A2FEFED36E35872374C96C2D418&format=json",
-        xhrFields: {
-            withCredentials: true
-        },
         headers: {
             'Accept': 'application/json',
             'Access-Control-Allow-Origin': "*",
-            'Access-Control-Allow-Methods': 'GET, PUT, POST, DELETE, HEAD, OPTIONS',
+            'Access-Control-Allow-Methods': 'GET, POST',
         },
         success: async function(data) {
             var game_plat = JSON.parse(document.getElementById('game_plat').textContent);
