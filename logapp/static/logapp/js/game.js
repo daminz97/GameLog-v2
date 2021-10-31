@@ -201,11 +201,17 @@ drawGraph();
 
 $(document).ready(function() {
     // get retail price
-    var previewUrl = "https://api.steampowered.com/ISteamApps/GetAppList/v0002/?key=2E393A2FEFED36E35872374C96C2D418&format=json";
     $.ajax({
         type: 'GET',
         crossDomain: true,
-        url: previewUrl,
+        url: "https://api.steampowered.com/ISteamApps/GetAppList/v0002/?key=2E393A2FEFED36E35872374C96C2D418&format=json",
+        headers: {
+            'accept': 'application/json',
+            'Access-Control-Allow-Origin': "*",
+        },
+        dataType: 'jsonp',
+        async: true,
+        cache: false,
         success: async function(data) {
             var game_plat = JSON.parse(document.getElementById('game_plat').textContent);
             var game_image = JSON.parse(document.getElementById('game_image').textContent);
