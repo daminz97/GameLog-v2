@@ -175,7 +175,7 @@ $(document).ready(function(){
     $('#reset_username').keyup(function() {
         $.ajax({
             type: "GET",
-            url: "{% url 'if_exists' %}",
+            url: '{% url if_exists %}',
             data: {
                 keyin_username: $('#reset_username').val().trim(),
                 dataType: 'json',
