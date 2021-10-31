@@ -96,7 +96,6 @@ def external_steam(request, game_plat, game_id):
         if r.status_code == 200:
             data = r.json()
             app_list = data['applist']['apps']
-            return JsonResponse(app_list, safe=False)
             price = 0
             steam_id= 0
             image_url = ''
@@ -108,6 +107,7 @@ def external_steam(request, game_plat, game_id):
             if game_info.status_code == 200:
                 price = game_info.json()[steam_id]['data']['price_overview']['final_formatted']
                 image_url = game_info.json()[steam_id]['data']['header_image']
+            return JsonResponse(price, image_url, safe=False)
             game_url = 'https://store.steampowered.com/app/'+steam_id
             return JsonResponse({'game_url': game_url, 'price': price, 'image': image_url})
 
