@@ -96,7 +96,7 @@ def external_steam(request, game_plat, game_id):
         if r.status_code == 200:
             data = r.json()
             app_list = data['applist']['apps']
-            return JsonResponse(app_list)
+            return JsonResponse(app_list, safe=False)
             price = 0
             steam_id= 0
             image_url = ''
