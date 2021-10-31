@@ -12,7 +12,6 @@ from .forms import *
 import json
 from django.db.models import Q
 from django.conf.urls.static import static
-import requests
 # Create your views here.
 
 def search(request):
