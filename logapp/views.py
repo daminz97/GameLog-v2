@@ -70,13 +70,13 @@ def games(request):
 def game(request, game_plat, game_id):
     game = Game.objects.get(pk=game_id)
     platform = game.platform
-    platform_icon = "logapp/static/img/steam.svg"
+    platform_icon = "logapp/steam.svg"
     if platform == "PlayStation":
-        platform_icon = "logapp/static/img/playstation.svg"
+        platform_icon = "logapp/playstation.svg"
     elif platform == "Xbox":
-        platform_icon = "logapp/static/img/xbox.svg"
+        platform_icon = "logapp/xbox.svg"
     else:
-        platform_icon = "logapp/static/img/nintendo.svg"
+        platform_icon = "logapp/nintendo.svg"
     context = {
         'game': game,
         'game_platform': platform,
