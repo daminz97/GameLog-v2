@@ -90,7 +90,7 @@ def game(request, game_plat, game_id):
     }
     return render(request, 'logapp/game.html', context)
 
-def external_steam(request):
+def external_steam(request, game_plat, game_id):
     if request.method == 'GET':
         r = requests.get('https://api.steampowered.com/ISteamApps/GetAppList/v0002/?key=2E393A2FEFED36E35872374C96C2D418&format=json')
         if r.status_code == 200:
