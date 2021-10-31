@@ -210,7 +210,6 @@ $(document).ready(function() {
             'Access-Control-Allow-Methods': 'GET, PUT, POST, DELETE, HEAD, OPTIONS',
 
         },
-        dataType: 'jsonp',
         async: true,
         cache: false,
         success: async function(data) {
