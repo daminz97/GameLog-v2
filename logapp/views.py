@@ -12,6 +12,7 @@ from .forms import *
 import json
 from django.db.models import Q
 from django.conf.urls.static import static
+import requests
 # Create your views here.
 
 def search(request):
@@ -68,31 +69,33 @@ def games(request):
 
 @login_required(login_url='login')
 def game(request, game_plat, game_id):
-    # external = None
-    # if request.method == 'GET':
-    #     r = requests.get('https://api.steampowered.com/ISteamApps/GetAppList/v0002/', params=request.GET)
-    #     if r.status_code == 200:
-    #         external = r.json()
     game = Game.objects.get(pk=game_id)
-    platform = game.platform
     platform_icon = 'steam.svg'
-    if platform == "PlayStation":
+    if game_plat == "PlayStation":
         platform_icon = 'playstation.svg'
-    elif platform == "Xbox":
+    elif game_plat == "Xbox":
         platform_icon = 'xbox.svg'
-    elif platform == "Nintendo":
+    elif game_plat == "Nintendo":
         platform_icon = 'nintendo.svg'
     else:
         pass
     context = {
         'game': game,
-        'game_platform': platform,
+        'game_platform': game_plat,
         'game_name': game.name,
         'game_image': game.image,
         'platform_icon': platform_icon,
         # 'external': external,
     }
     return render(request, 'logapp/game.html', context)
+
+def external_steam(request):
+    if request.method == 'GET':
+        r = requests.get('https://api.steampowered.com/ISteamApps/GetAppList/v0002/?key=2E393A2FEFED36E35872374C96C2D418&format=json')
+        if r.status_code == 200:
+            data = r.json()
+            return JsonResponse(data)
+
 
 def new_game(request):
     if request.method == "POST":

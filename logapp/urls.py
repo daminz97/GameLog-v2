@@ -24,5 +24,5 @@ urlpatterns = [
     path('login/change_password', views.change_password, name='change_password'),
     path('dashboard/update_budget', views.update_budget, name='update_budget'),
     path('dashboard/update_time_budget', views.update_time_budget, name='update_time_budget'),
-
+    path('steam_price', views.external_steam, name='steam_price'),
 ]

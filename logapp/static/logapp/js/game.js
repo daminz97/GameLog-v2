@@ -203,18 +203,12 @@ $(document).ready(function() {
     // get retail price
     $.ajax({
         type: 'GET',
-        url: 'game_detail',
-        crossDomain: true,
-        url: "https://api.steampowered.com/ISteamApps/GetAppList/v0002/",
-        // headers: {
-        //     'Accept': 'application/json',
-        //     'Access-Control-Allow-Origin': "*",
-        // },
+        url: 'steam_price',
         success: async function(data) {
             var game_plat = JSON.parse(document.getElementById('game_plat').textContent);
             var game_image = JSON.parse(document.getElementById('game_image').textContent);
             if (game_plat === 'Steam') {
-                const app_list = data.external['applist']['apps'];
+                const app_list = data['applist']['apps'];
                 var game_name = JSON.parse(document.getElementById('game_detail').textContent);
                 var price = 0;
                 var steam_id= 0;
