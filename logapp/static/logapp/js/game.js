@@ -206,12 +206,10 @@ $(document).ready(function() {
         crossDomain: true,
         url: "https://api.steampowered.com/ISteamApps/GetAppList/v0002/?key=2E393A2FEFED36E35872374C96C2D418&format=json",
         headers: {
-            'Access-Control-Allow-Origin': "*",
+            'Access-Control-Allow-Origin': "https://radiant-coast-66907.herokuapp.com",
             'Access-Control-Allow-Methods': 'GET, PUT, POST, DELETE, HEAD, OPTIONS',
 
         },
-        async: true,
-        cache: false,
         success: async function(data) {
             var game_plat = JSON.parse(document.getElementById('game_plat').textContent);
             var game_image = JSON.parse(document.getElementById('game_image').textContent);
