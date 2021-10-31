@@ -99,9 +99,9 @@ def external_steam(request, game_plat, game_id):
             price = 0
             steam_id= 0
             image_url = ''
-            return JsonResponse(app_list[0], safe=False)
+            return JsonResponse(app_list[0]['name'], safe=False)
             for i in range(len(app_list)):
-                if app_list[i]['name'] == request.GET('game_name'):
+                if app_list[i]['name'] == request.GET.get('game_name'):
                     steam_id = app_list[i]['appid']
                     break
             game_info = requests.get('https://store.steampowered.com/api/appdetails?appids='+steam_id+'&cc=us&l=en').json()
