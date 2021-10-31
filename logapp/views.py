@@ -75,8 +75,10 @@ def game(request, game_plat, game_id):
         platform_icon = 'playstation.svg'
     elif platform == "Xbox":
         platform_icon = 'xbox.svg'
-    else:
+    elif platform == "Nintendo":
         platform_icon = 'nintendo.svg'
+    else:
+        pass
     context = {
         'game': game,
         'game_platform': platform,
