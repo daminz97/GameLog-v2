@@ -208,7 +208,6 @@ $(document).ready(function() {
         headers: {
             'Accept': 'application/json',
             'Access-Control-Allow-Origin': "*",
-            'Access-Control-Allow-Methods': 'GET, POST',
         },
         success: async function(data) {
             var game_plat = JSON.parse(document.getElementById('game_plat').textContent);
